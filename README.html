@@ -1,0 +1,461 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/lib/index.min.js">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath@0.6.5/css/texmath.css">
+<link rel="stylesheet" href="https://gitcdn.xyz/repo/goessner/mdmath/master/css/vscode-texmath.css">
+
+</head>
+<body class="markdown-body">
+<h1 id="waiier47-mechanical-keyboard-1" data-line="0" class="code-line">WaIIer47 Mechanical Keyboard</h1>
+<p data-line="1" class="code-line">Custom design 47 key ortholinear keyboard with PCB, and Atmega32u4 Microcontroller</p>
+<h1 id="pcb-tutorial-1" data-line="3" class="code-line">PCB Tutorial</h1>
+<p data-line="4" class="code-line">Designing a custom mechanical keyboard PCB using KiCad. The following was based on <a href="https://github.com/ruiqimao/keyboard-pcb-guide" data-href="https://github.com/ruiqimao/keyboard-pcb-guide">Ruiqi Mao's Tutorial</a></p>
+<h2 id="download-kicad-and-install-the-mechanical-keyboard-libraries-1" data-line="6" class="code-line">Download Kicad and Install the Mechanical Keyboard Libraries</h2>
+<ul>
+<li data-line="8" class="code-line">
+<p data-line="8" class="code-line">Download and install Kicad from <a href="https://kicad-pcb.org/" data-href="https://kicad-pcb.org/">https://kicad-pcb.org/</a></p>
+<ul>
+<li data-line="9" class="code-line">During installation, choose to download Kicad's default libraries</li>
+</ul>
+</li>
+<li data-line="10" class="code-line">
+<p data-line="10" class="code-line">Clone the following two repositories (or download zip and extract):</p>
+<ul>
+<li data-line="11" class="code-line"><code>keyboard_parts.pretty</code> from <a href="https://github.com/tmk/keyboard_parts.pretty" data-href="https://github.com/tmk/keyboard_parts.pretty">https://github.com/tmk/keyboard_parts.pretty</a></li>
+<li data-line="12" class="code-line"><code>keebs.pretty</code> from <a href="https://github.com/egladman/keebs.pretty" data-href="https://github.com/egladman/keebs.pretty">https://github.com/egladman/keebs.pretty</a></li>
+<li data-line="13" class="code-line"><code>Type-C.pretty</code> from <a href="https://github.com/ai03-2725/Type-C.pretty" data-href="https://github.com/ai03-2725/Type-C.pretty">https://github.com/ai03-2725/Type-C.pretty</a></li>
+<li data-line="14" class="code-line"><code>kicad_lib_tmk</code>.lib <a href="https://github.com/tmk/kicad_lib_tmk" data-href="https://github.com/tmk/kicad_lib_tmk">https://github.com/tmk/kicad_lib_tmk</a></li>
+</ul>
+<p data-line="16" class="code-line"><img src="./images/kicad_libraries.PNG" alt="Kicad Libraries" class="loading" id="image-hash-902868848"></p>
+</li>
+<li data-line="18" class="code-line">
+<p data-line="18" class="code-line">Open <code>Kicad</code> &gt; <code>Preferences</code> &gt; <code>Manage Footprint Libraries</code></p>
+<ul>
+<li data-line="19" class="code-line">In the <code>Global Libraries</code> tab, press the folder icon to <code>Add existing library to table</code></li>
+<li data-line="20" class="code-line">Navigate to where you cloned the the libraries, click on the <code>keebs.pretty</code> and press <code>OK</code>
+<ul>
+<li data-line="21" class="code-line">Do the same for <code>keyboard_parts.pretty</code> and <code>Type-C.pretty</code></li>
+</ul>
+</li>
+<li data-line="22" class="code-line">If done successfully, you should see the following in the <code>Global Libraries</code> tab:</li>
+</ul>
+<p data-line="24" class="code-line"><img src="./images/global_footprint_libraries.PNG" alt="Global Footprint Libraries" class="loading" id="image-hash-1170361573">
+<img src="./images/manage_footprint_libraries.PNG" alt="Manage Footprint Libraries" class="loading" id="image-hash--956088153"></p>
+</li>
+<li data-line="27" class="code-line">
+<p data-line="27" class="code-line">Back in the Kicad Menu, <code>Preferences</code> &gt; <code>Mange Symbol Libraries</code></p>
+<ul>
+<li data-line="28" class="code-line">In the <code>Global Libraries</code> tab, press the folder icon to <code>Add existing library to table</code></li>
+<li data-line="29" class="code-line">Navigate to where you cloned <code>kicad_lib_tmk</code> and select <code>keyboard_parts.lib</code></li>
+<li data-line="30" class="code-line">Navigate to <code>Type-C.pretty</code> and select <code>Type-C.lib</code></li>
+<li data-line="31" class="code-line">If done successfully, you should see the following:</li>
+</ul>
+<p data-line="33" class="code-line"><img src="./images/global_symbol_libraries.PNG" alt="Global Symbol Libraries" class="loading" id="image-hash--1813251204"></p>
+</li>
+</ul>
+<h2 id="creating-the-schematic-file-1" data-line="35" class="code-line">Creating The Schematic File</h2>
+<ul>
+<li data-line="37" class="code-line">
+<p data-line="37" class="code-line">In Kicad: <code>file</code> &gt; <code>New</code> &gt; <code>New Project</code></p>
+<ul>
+<li data-line="38" class="code-line">Create a new Folder for the project, and give a name for the project (I am using <code>tutorial_keyboard</code>)</li>
+<li data-line="39" class="code-line">Press <code>Save</code></li>
+<li data-line="40" class="code-line">On the left side, you should now see 3 files:
+<ul>
+<li data-line="41" class="code-line"><code>tutorial_keyboard.kicad_pcb</code>: The PCB file</li>
+<li data-line="42" class="code-line"><code>tutorial_keyboard.pro</code>: The project file, we will not be using this</li>
+<li data-line="43" class="code-line"><code>tutorial_keyboard.sch</code>: The schematic file</li>
+</ul>
+</li>
+</ul>
+<p data-line="45" class="code-line"><img src="./images/project_files.PNG" alt="Project Files" class="loading" id="image-hash-113557951"></p>
+</li>
+<li data-line="47" class="code-line">
+<p data-line="47" class="code-line">Click on the <code>Schematic Layout Editor</code> button</p>
+</li>
+<li data-line="48" class="code-line">
+<p data-line="48" class="code-line">Because this schematic will be large, increase the paper size by going to <code>file</code> &gt; <code>Page Settings...</code> then selecting the <code>C</code> page size</p>
+</li>
+</ul>
+<h2 id="placing-components-on-the-schematic-1" data-line="50" class="code-line">Placing Components on the Schematic</h2>
+<ul>
+<li data-line="52" class="code-line">
+<p data-line="52" class="code-line">To place a part, press the <code>Place symbol</code> button on the right side</p>
+</li>
+<li data-line="53" class="code-line">
+<p data-line="53" class="code-line">For the microcontroller:</p>
+<ul>
+<li data-line="54" class="code-line"><code>Place symbol</code> and click on the page &gt; expand <code>keybord_parts</code> &gt; select <code>ATMEGA32U4</code> &gt; press <code>OK</code> &gt; Click on the sheet to place the component</li>
+<li data-line="55" class="code-line">You should now see the component placed on your page with the label U?
+<img src="./images/atmega.PNG" alt="Atmega Symbol" class="loading" id="image-hash-63789517">
+<img src="./images/u.PNG" alt="U?" class="loading" id="image-hash-995295971"></li>
+</ul>
+</li>
+<li data-line="58" class="code-line">
+<p data-line="58" class="code-line">Place the following components as required by the <a href="http://ww1.microchip.com/downloads/en/devicedoc/atmel-7766-8-bit-avr-atmega16u4-32u4_datasheet.pdf" data-href="http://ww1.microchip.com/downloads/en/devicedoc/atmel-7766-8-bit-avr-atmega16u4-32u4_datasheet.pdf">datasheet</a></p>
+<ul>
+<li data-line="59" class="code-line">A 10 k<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq> resustor near <code>HWB/PE2</code>
+<ul>
+<li data-line="60" class="code-line"><code>Place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>R</code> &gt; <code>Ok</code>
+<ul>
+<li data-line="61" class="code-line">Press <code>r</code> before placing the component, or while hovering over the component after placing to rotate it</li>
+<li data-line="62" class="code-line">Hover over it and press <code>e</code> to <code>Edit Value Field</code></li>
+<li data-line="63" class="code-line">Change the <code>Text</code> field to say <code>10k</code>
+<img src="./images/r10k.PNG" alt="R10k" class="loading" id="image-hash--752908318"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="65" class="code-line">A 1 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">μ</span></span></span></span></eq>F capacitor on <code>UCap</code>
+<ul>
+<li data-line="66" class="code-line"><code>place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>C</code> &gt; <code>Ok</code></li>
+<li data-line="67" class="code-line">Change the its value to <code>1uF</code>
+<img src="./images/ucap.PNG" alt="UCap" class="loading" id="image-hash--1281454811">
+<img src="./images/ucap_datasheet.PNG" alt="UCap datasheet" class="loading" id="image-hash-1298563099"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="70" class="code-line">
+<p data-line="70" class="code-line">Connect <code>Vcc</code> and <code>GND</code></p>
+<ul>
+<li data-line="71" class="code-line">On the right side, slect <code>Place power port</code> &gt; click on the page</li>
+<li data-line="72" class="code-line">Expand the <code>power</code> library and select &gt; <code>VCC</code> &gt; <code>Ok</code></li>
+<li data-line="73" class="code-line">Place the VCC flag near <code>AVCC</code>
+<ul>
+<li data-line="74" class="code-line">On the right, click the <code>Place wire</code> icon</li>
+<li data-line="75" class="code-line">Click at the empty circle on <code>AVCC</code> and make a connection to the <code>VCC</code> flag
+<img src="./images/AVCC.PNG" alt="AVCC Connection" class="loading" id="image-hash--1266357955"></li>
+<li data-line="77" class="code-line">Repeat for:
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td><code>UVcc</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>VBus</code></td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>VCC</code></td>
+</tr>
+<tr>
+<td>24</td>
+<td><code>AVcc</code></td>
+</tr>
+<tr>
+<td>34</td>
+<td><code>VCC</code></td>
+</tr>
+<tr>
+<td>44</td>
+<td><code>AVcc</code></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li data-line="86" class="code-line">Make sure there are 6 total connections to <code>VCC</code></li>
+<li data-line="87" class="code-line">Individual connections to <code>VCC</code> in the schematic do not need to be connected together</li>
+<li data-line="88" class="code-line">Connect <code>VCC</code> to a power flag
+<ul>
+<li data-line="89" class="code-line"><code>Place symbol</code> &gt; Search for <code>PWR_FLAG</code> &gt; <code>PWR_FLAG</code></li>
+<li data-line="90" class="code-line">Connect the <code>PWR_FLAG</code> to <code>VCC</code>
+<img src="./images/power_flag.PNG" alt="Power Flag" class="loading" id="image-hash-578174478"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="92" class="code-line"><code>Place power port</code> &gt; <code>GND</code> (<code>Power flag, ground</code> from the <code>s</code>power` library)
+<ul>
+<li data-line="93" class="code-line">Create a connection to <code>GND</code> on the following pins:
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td><code>UGND</code></td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>GND</code></td>
+</tr>
+<tr>
+<td>23</td>
+<td><code>GND</code></td>
+</tr>
+<tr>
+<td>35</td>
+<td><code>GND</code></td>
+</tr>
+<tr>
+<td>43</td>
+<td><code>GND</code></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li data-line="101" class="code-line">Additionally, connect the other end of the capacitor and resistor to <code>GND</code></li>
+<li data-line="102" class="code-line">Make sure there are 5 connections to <code>GND</code>
+<img src="./images/vcc_gnd.PNG" alt="VCC and Ground on uc" class="loading" id="image-hash-1390750882"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="105" class="code-line">
+<p data-line="105" class="code-line">If there are any overlapping components or labels, press <code>m</code> over the component/label to move it somewhere else</p>
+<ul>
+<li data-line="106" class="code-line">You will have to remake any connections</li>
+</ul>
+</li>
+<li data-line="107" class="code-line">
+<p data-line="107" class="code-line">Reset Circuit</p>
+<ul>
+<li data-line="108" class="code-line">The following allows for a manual reset button that (If you do not want a reset button, connect <code>RESET</code> to <code>VCC</code>)</li>
+<li data-line="109" class="code-line">Move to an open part of the page</li>
+<li data-line="110" class="code-line"><code>Place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>SW_PUSH</code></li>
+<li data-line="111" class="code-line">We want the voltage supplied to the reset pin to be <code>High (5V)</code> normally, and ground when pushed to reset the microcontroller</li>
+<li data-line="112" class="code-line">Connect the left side to <code>GND</code></li>
+<li data-line="113" class="code-line">Create a connection between <code>VCC</code> -&gt; 10 k<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq> resistor -&gt; switch-s right pin
+<img src="./images/reset_circuit.PNG" alt="Reset Circuit" class="loading" id="image-hash-457572583"></li>
+<li data-line="115" class="code-line">Place a flag on the right side:
+<ul>
+<li data-line="116" class="code-line">In the right menu: <code>Place net label</code></li>
+<li data-line="117" class="code-line">Give it the name <code>Reset</code></li>
+<li data-line="118" class="code-line">Connect it to the wire on the right side</li>
+<li data-line="119" class="code-line">Place a net label with the name <code>Reset</code> on the <code>RESET</code> pin (pin 13) of the microcontroller</li>
+<li data-line="120" class="code-line">The reset circuit is now connected to the microcontroller
+<img src="./images/net_connection.PNG" alt="Reset net connection" class="loading" id="image-hash-1384242920"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="122" class="code-line">
+<p data-line="122" class="code-line">USB Type-C Circuit</p>
+<ul>
+<li data-line="123" class="code-line">This keyboard will connect to a computer using a USB-C connector in USB 2.0 Mode</li>
+<li data-line="124" class="code-line"><code>Place symbol</code> &gt; <code>Connector</code> &gt; <code>USB_C_Receptacle_USB2.0</code></li>
+<li data-line="125" class="code-line">Make the following connections</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Receptacle Port</th>
+<th>Connection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VBUS</code></td>
+<td><code>VCC</code></td>
+</tr>
+<tr>
+<td><code>CC1</code></td>
+<td>5.1 k<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq> resistor -&gt; <code>GND</code></td>
+</tr>
+<tr>
+<td><code>CC2</code></td>
+<td>5.1 k<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq> resistor -&gt; <code>GND</code></td>
+</tr>
+<tr>
+<td><code>D-</code></td>
+<td>Connect both <code>D-</code> pins through a 22 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq>  resistor to a net called <code>D-</code></td>
+</tr>
+<tr>
+<td><code>D+</code></td>
+<td>Connect both <code>D+</code> pins through a 22 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq> resistor to a net called <code>D+</code></td>
+</tr>
+<tr>
+<td><code>SBU1</code></td>
+<td>Leave unconnected</td>
+</tr>
+<tr>
+<td><code>SBU2</code></td>
+<td>Leave unconnected</td>
+</tr>
+<tr>
+<td><code>GND</code></td>
+<td><code>GND</code></td>
+</tr>
+<tr>
+<td><code>SHIELD</code></td>
+<td><code>GND</code></td>
+</tr>
+</tbody>
+</table>
+<p data-line="138" class="code-line"><img src="./images/usbc_receptacle.PNG" alt="USB-C Receptacle" class="loading" id="image-hash-1813365186"></p>
+<ul>
+<li data-line="139" class="code-line">On the microcontroller, connect <code>D-</code> (pin 3) to the <code>D-</code> net and <code>D+</code> (pin 4) to the <code>D+</code> net
+<img src="./images/d-_d+.PNG" alt="D- and D+ connections" class="loading" id="image-hash-2141712619"></li>
+</ul>
+</li>
+<li data-line="142" class="code-line">
+<p data-line="142" class="code-line">Crystal Oscillator Circuit</p>
+<ul>
+<li data-line="143" class="code-line">The following circuit is required for the microcontroller to function as a USB device</li>
+<li data-line="144" class="code-line"><code>Place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>XTAL</code></li>
+<li data-line="145" class="code-line">Connect a 22 pF capacitor to both ends of the <code>XTAL</code> with the other side going off to <code>GND</code></li>
+<li data-line="146" class="code-line">Connect one side of the <code>XTAL</code> to a net called <code>xtal1</code> and the other to a net called <code>xtal2</code></li>
+<li data-line="147" class="code-line">Connect the <code>xtal1</code> net to <code>XTAL1</code> (pin 16) and <code>xtal2</code> to <code>XTAL2</code> (pin 17) on the microcontroller
+<img src="./images/xtal_circuit.PNG" alt="Crystal Circuit" class="loading" id="image-hash-2064364217"></li>
+</ul>
+</li>
+<li data-line="150" class="code-line">
+<p data-line="150" class="code-line">Placing the keys</p>
+<ul>
+<li data-line="151" class="code-line">The following circuit is used for all the keys:
+<img src="./images/key_circuit.PNG" alt="Key circuit" class="loading" id="image-hash--1909546313"></li>
+<li data-line="153" class="code-line"><code>Place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>KEYSW</code></li>
+<li data-line="154" class="code-line"><code>Place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>D</code></li>
+<li data-line="155" class="code-line">Connect the <code>2 pin</code> on the <code>KEYSW</code> on to the 2 pin on the diode <strong>Orientation on the diode is extremely important</strong></li>
+<li data-line="156" class="code-line">For an 47 key ortholinear keyboard, copy and paste this circuit 46 times in rows of 12 (besides the third row which should have 11 keys)</li>
+<li data-line="157" class="code-line">Connect all the pin 1's on the switch on the same row</li>
+<li data-line="158" class="code-line">Connect all the pin 1's on the diode to the next pin 2 on the switch in the columns
+<img src="./images/keys.PNG" alt="Keys" class="loading" id="image-hash-935188572"></li>
+<li data-line="160" class="code-line">Connect the bottom row diodes together
+<img src="./images/row3.PNG" alt="Row 3" class="loading" id="image-hash-418697601"></li>
+<li data-line="162" class="code-line">Create a net on the each of the vertical wire segments in the top row named <code>col0</code> to <code>col11</code></li>
+<li data-line="163" class="code-line">Create a net on the the left most switch of each row labeled <code>row0</code> to <code>row3</code>
+<img src="./images/key_labels.PNG" alt="Key labels" class="loading" id="image-hash-1786279175">
+<img src="./images/key_label_zoom.PNG" alt="Key label zoom" class="loading" id="image-hash--1015548602"></li>
+<li data-line="166" class="code-line">Connect each of the row and col nets to a GPIO pin on the microcontroller (<code>PAX</code>, <code>PBX</code>, <code>PCX</code>, or <code>PDX</code>) these can be changed later to make it easier to route the PCB
+<img src="./images/uc_kb_nets.PNG" alt="Microcontroller keyboard nets" class="loading" id="image-hash--879266859"></li>
+</ul>
+</li>
+<li data-line="168" class="code-line">
+<p data-line="168" class="code-line">Bypass Capacitors</p>
+<ul>
+<li data-line="169" class="code-line">Bypass capacitors are placed between all <code>VCC</code> nets and <code>GND</code>, watch this <a href="https://www.youtube.com/watch?v=BcJ6UdDx1vg" data-href="https://www.youtube.com/watch?v=BcJ6UdDx1vg">video to learn more</a></li>
+<li data-line="170" class="code-line">There are 6 connections that will use bypass capacitors</li>
+<li data-line="171" class="code-line">Create the following circuit using 0.1 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">μ</span></span></span></span></eq> capacitors
+<img src="./images/bypass.PNG" alt="Bypass capacitor circuit" class="loading" id="image-hash-1458527760"></li>
+</ul>
+</li>
+<li data-line="173" class="code-line">
+<p data-line="173" class="code-line">Mark all unconnected ports</p>
+<ul>
+<li data-line="174" class="code-line">In the right menu, click <code>Place no connection flag</code></li>
+<li data-line="175" class="code-line">Place the symbol over all unused ports on the microcontroller and on <code>SBU1</code> and <code>SBU2</code> on the USB C receptacle
+<img src="./images/unconnected_nets.PNG" alt="Unconnected nets" class="loading" id="image-hash-824257325"></li>
+</ul>
+</li>
+<li data-line="177" class="code-line">
+<p data-line="177" class="code-line">Annotate the schematic to give components names</p>
+<ul>
+<li data-line="178" class="code-line"><code>Tools</code> &gt; <code>Annotate Schematic</code></li>
+<li data-line="179" class="code-line">Keep all default settings</li>
+<li data-line="180" class="code-line">Press <code>Annotate</code></li>
+<li data-line="181" class="code-line"><code>Close</code></li>
+</ul>
+</li>
+<li data-line="182" class="code-line">
+<p data-line="182" class="code-line">Run a Design Rules Check to make sure there are no errors in the circuit</p>
+<ul>
+<li data-line="183" class="code-line"><code>Perform electrical rules check</code> &gt; <code>Run</code></li>
+<li data-line="184" class="code-line">Fix any errors that occur, if there are only errors for your <code>VCC</code> or <code>GND</code> not being driven, you can move on
+<img src="./images/finished_circuit.PNG" alt="Finished Circuit" class="loading" id="image-hash-603594756"></li>
+</ul>
+</li>
+</ul>
+<h2 id="assigning-footprints-1" data-line="187" class="code-line">Assigning Footprints</h2>
+<ul>
+<li data-line="189" class="code-line">Assigning footprints tell the PCB software what size to make all of your components. Additionally you will buy components based off the size of their footprint. For most components we will use the <code>0805</code> surface mount package. If you do not feel comfortable surface mounting components, you will have to heavily modify the PCB layout.</li>
+<li data-line="190" class="code-line"><code>Tools</code> &gt; <code>Assign Footprints...</code>
+<table>
+<thead>
+<tr>
+<th>Components</th>
+<th>Library</th>
+<th>Footprint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All Capacitors</td>
+<td><code>Capacitor_SMD</code></td>
+<td><code>Capacitor_SMD:C_0805_2012Metric</code></td>
+</tr>
+<tr>
+<td>All Diodes</td>
+<td><code>Diode_SMD</code></td>
+<td><code>Diode_SMD:D_0805_2012Metric</code></td>
+</tr>
+<tr>
+<td>USB C Receptacle</td>
+<td><code>Type-C</code></td>
+<td><code>Type-C:USB_C_GCT_USB4085</code></td>
+</tr>
+<tr>
+<td>All <code>KEYSW</code> <strong>EXCEPT FOR THE SPACE BAR</strong></td>
+<td><code>keebs</code></td>
+<td><code>keebs:Mx_Alps_100</code></td>
+</tr>
+<tr>
+<td>Space Bar (sixth key in on the bottom row)</td>
+<td><code>keebs</code></td>
+<td><code>keebs:Mx_Alps_200</code></td>
+</tr>
+<tr>
+<td>All Resistors</td>
+<td><code>Resistor_SMD</code></td>
+<td><code>Resistor_SMD:R_0805_2012Metric</code></td>
+</tr>
+<tr>
+<td><code>SW_PUSH</code></td>
+<td><code>Button_Switch_SMD</code></td>
+<td><code>Button_Switch_SMD:SW_SPST_TL3342</code></td>
+</tr>
+<tr>
+<td><code>ATMEGA32U4</code></td>
+<td><code>Package_QFP</code></td>
+<td><code>Package_QFP:TQFP-44_10x10mm_P0.8mm</code></td>
+</tr>
+<tr>
+<td><code>XTAL</code></td>
+<td><code>keyboard_parts</code></td>
+<td><code>keyboard_parts:XTAL_HC_49_TH</code></td>
+</tr>
+</tbody>
+</table>
+<img src="./images/fp1.PNG" alt="Footprint 1" class="loading" id="image-hash-134020437">
+<img src="./images/fp2.PNG" alt="Footprint 2" class="loading" id="image-hash-134943958">
+<img src="./images/fp3.PNG" alt="Footprint 3" class="loading" id="image-hash-135867479">
+<ul>
+<li data-line="205" class="code-line">Press <code>OK</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="creating-the-pcb-1" data-line="207" class="code-line">Creating the PCB</h2>
+<h3 id="importing-from-the-schematic-1" data-line="209" class="code-line">Importing From the Schematic</h3>
+<ul>
+<li data-line="211" class="code-line">Close the schematic and open <code>PCB Layout Editor</code></li>
+<li data-line="212" class="code-line"><code>Tools</code> &gt; <code>Update PCB from Schematic</code></li>
+<li data-line="213" class="code-line">Click Anywhere to Place all the components</li>
+<li data-line="214" class="code-line">Click <code>Layers Manager</code> &gt; <code>Items</code> &gt; Uncheck the box next to <code>Ratsnest</code>
+<ul>
+<li data-line="215" class="code-line">This will be helpful when routing the PCB, but it is not now</li>
+</ul>
+</li>
+</ul>
+<h3 id="organizing-your-components-1" data-line="217" class="code-line">Organizing your components</h3>
+<ul>
+<li data-line="219" class="code-line">Arrange the keys in the same order as your circuit</li>
+</ul>
+
+</body></html>
