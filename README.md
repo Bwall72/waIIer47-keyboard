@@ -1,6 +1,11 @@
 # WaIIer47 Mechanical Keyboard
 Custom design 47 key ortholinear keyboard with PCB, and Atmega32u4 Microcontroller
 
+![Both Keyboards](./images/both.png)
+Revision 2 Green, Revision 1 White, Back top, Front bottom
+
+![Revision 2](./images/rev2.jpg)
+![Revision 1](./images/rev1.jpg)
 # PCB Tutorial
 Designing a custom mechanical keyboard PCB using KiCad. The following was based on [Ruiqi Mao's Tutorial](https://github.com/ruiqimao/keyboard-pcb-guide)
 
@@ -218,3 +223,5 @@ Designing a custom mechanical keyboard PCB using KiCad. The following was based 
 ### Organizing your components
 
 * Arrange the keys in the same order as your circuit
+
+**WIP**
