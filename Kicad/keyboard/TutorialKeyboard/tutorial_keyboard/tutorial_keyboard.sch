@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:tutorial_keyboard-cache
 EELAYER 29 0
 EELAYER END
 $Descr C 22000 17000
@@ -199,7 +200,7 @@ U 1 1 5F79CC9B
 P 3250 2450
 F 0 "J1" H 3357 3317 50  0000 C CNN
 F 1 "USB_C_Receptacle_USB2.0" H 3357 3226 50  0000 C CNN
-F 2 "keebs:Mx_Alps_100" H 3400 2450 50  0001 C CNN
+F 2 "Type-C:USB_C_GCT_USB4085" H 3400 2450 50  0001 C CNN
 F 3 "https://www.usb.org/sites/default/files/documents/usb_type-c.zip" H 3400 2450 50  0001 C CNN
 	1    3250 2450
 	1    0    0    -1  

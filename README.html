@@ -10,15 +10,15 @@
 
 </head>
 <body class="markdown-body">
-<h1 id="waiier47-mechanical-keyboard-1" data-line="0" class="code-line">WaIIer47 Mechanical Keyboard</h1>
+<h1 id="waiier47-mechanical-keyboard" data-line="0" class="code-line">WaIIer47 Mechanical Keyboard</h1>
 <p data-line="1" class="code-line">Custom design 47 key ortholinear keyboard with PCB, and Atmega32u4 Microcontroller</p>
 <p data-line="3" class="code-line"><img src="./images/both.png" alt="Both Keyboards" class="loading" id="image-hash--1733373047">
 Revision 2 Green, Revision 1 White, Back top, Front bottom</p>
 <p data-line="6" class="code-line"><img src="./images/rev2.jpg" alt="Revision 2" class="loading" id="image-hash-104068783">
 <img src="./images/rev1.jpg" alt="Revision 1" class="loading" id="image-hash-103145262"></p>
-<h1 id="pcb-tutorial-1" data-line="8" class="code-line">PCB Tutorial</h1>
+<h1 id="pcb-tutorial" data-line="8" class="code-line">PCB Tutorial</h1>
 <p data-line="9" class="code-line">Designing a custom mechanical keyboard PCB using KiCad. The following was based on <a href="https://github.com/ruiqimao/keyboard-pcb-guide" data-href="https://github.com/ruiqimao/keyboard-pcb-guide">Ruiqi Mao's Tutorial</a></p>
-<h2 id="download-kicad-and-install-the-mechanical-keyboard-libraries-1" data-line="11" class="code-line">Download Kicad and Install the Mechanical Keyboard Libraries</h2>
+<h2 id="download-kicad-and-install-the-mechanical-keyboard-libraries" data-line="11" class="code-line">Download Kicad and Install the Mechanical Keyboard Libraries</h2>
 <ul>
 <li data-line="13" class="code-line">
 <p data-line="13" class="code-line">Download and install Kicad from <a href="https://kicad-pcb.org/" data-href="https://kicad-pcb.org/">https://kicad-pcb.org/</a></p>
@@ -61,7 +61,7 @@ Revision 2 Green, Revision 1 White, Back top, Front bottom</p>
 <p data-line="38" class="code-line"><img src="./images/global_symbol_libraries.PNG" alt="Global Symbol Libraries" class="loading" id="image-hash--1813251204"></p>
 </li>
 </ul>
-<h2 id="creating-the-schematic-file-1" data-line="40" class="code-line">Creating The Schematic File</h2>
+<h2 id="creating-the-schematic-file" data-line="40" class="code-line">Creating The Schematic File</h2>
 <ul>
 <li data-line="42" class="code-line">
 <p data-line="42" class="code-line">In Kicad: <code>file</code> &gt; <code>New</code> &gt; <code>New Project</code></p>
@@ -85,7 +85,7 @@ Revision 2 Green, Revision 1 White, Back top, Front bottom</p>
 <p data-line="53" class="code-line">Because this schematic will be large, increase the paper size by going to <code>file</code> &gt; <code>Page Settings...</code> then selecting the <code>C</code> page size</p>
 </li>
 </ul>
-<h2 id="placing-components-on-the-schematic-1" data-line="55" class="code-line">Placing Components on the Schematic</h2>
+<h2 id="placing-components-on-the-schematic" data-line="55" class="code-line">Placing Components on the Schematic</h2>
 <ul>
 <li data-line="57" class="code-line">
 <p data-line="57" class="code-line">To place a part, press the <code>Place symbol</code> button on the right side</p>
@@ -377,7 +377,7 @@ Revision 2 Green, Revision 1 White, Back top, Front bottom</p>
 </ul>
 </li>
 </ul>
-<h2 id="assigning-footprints-1" data-line="192" class="code-line">Assigning Footprints</h2>
+<h2 id="assigning-footprints" data-line="192" class="code-line">Assigning Footprints</h2>
 <ul>
 <li data-line="194" class="code-line">Assigning footprints tell the PCB software what size to make all of your components. Additionally you will buy components based off the size of their footprint. For most components we will use the <code>0805</code> surface mount package. If you do not feel comfortable surface mounting components, you will have to heavily modify the PCB layout.</li>
 <li data-line="195" class="code-line"><code>Tools</code> &gt; <code>Assign Footprints...</code>
@@ -445,22 +445,96 @@ Revision 2 Green, Revision 1 White, Back top, Front bottom</p>
 </ul>
 </li>
 </ul>
-<h2 id="creating-the-pcb-1" data-line="212" class="code-line">Creating the PCB</h2>
-<h3 id="importing-from-the-schematic-1" data-line="214" class="code-line">Importing From the Schematic</h3>
+<h2 id="creating-the-pcb" data-line="212" class="code-line">Creating the PCB</h2>
+<h3 id="set-the-grid-size" data-line="214" class="code-line">Set the Grid Size</h3>
 <ul>
-<li data-line="216" class="code-line">Close the schematic and open <code>PCB Layout Editor</code></li>
-<li data-line="217" class="code-line"><code>Tools</code> &gt; <code>Update PCB from Schematic</code></li>
-<li data-line="218" class="code-line">Click Anywhere to Place all the components</li>
-<li data-line="219" class="code-line">Click <code>Layers Manager</code> &gt; <code>Items</code> &gt; Uncheck the box next to <code>Ratsnest</code>
+<li data-line="216" class="code-line">Click the <code>Grid</code> dropdown menu on the top</li>
+<li data-line="217" class="code-line"><code>Edit User Grid</code></li>
+<li data-line="218" class="code-line">Set <code>Size X</code> and <code>Size Y</code> to <code>0.254</code></li>
+</ul>
+<p data-line="220" class="code-line"><img src="./images/grid_menu.PNG" alt="Grid Menu" class="loading" id="image-hash--2065300314">
+<img src="./images/grid_size.PNG" alt="Grid Size" class="loading" id="image-hash--614551992"></p>
+<h3 id="importing-from-the-schematic" data-line="224" class="code-line">Importing From the Schematic</h3>
 <ul>
-<li data-line="220" class="code-line">This will be helpful when routing the PCB, but it is not now</li>
+<li data-line="226" class="code-line">Close the schematic and open <code>PCB Layout Editor</code></li>
+<li data-line="227" class="code-line"><code>Tools</code> &gt; <code>Update PCB from Schematic</code></li>
+<li data-line="228" class="code-line">Click Anywhere to Place all the components</li>
+<li data-line="229" class="code-line">Click <code>Layers Manager</code> &gt; <code>Items</code> &gt; Uncheck the box next to <code>Ratsnest</code>
+<ul>
+<li data-line="230" class="code-line">This will be helpful when routing the PCB, but it is not now</li>
 </ul>
 </li>
 </ul>
-<h3 id="organizing-your-components-1" data-line="222" class="code-line">Organizing your components</h3>
+<h3 id="organizing-your-components" data-line="232" class="code-line">Organizing your components</h3>
 <ul>
-<li data-line="224" class="code-line">Arrange the keys in the same order as your circuit</li>
+<li data-line="234" class="code-line">Arrange the keys in the same order as your circuit</li>
+<li data-line="235" class="code-line">The easiest way I found to do this is to use <code>ctrl + f</code> to search for the key annotations</li>
+<li data-line="236" class="code-line">I like to leave one <em>grid snap</em> gap between each key, make sure all keys are evenly spaced on the grid</li>
+<li data-line="237" class="code-line">There should be a visible <code>+</code> sign between all groups for 4 adjacent keys</li>
 </ul>
-<p data-line="226" class="code-line"><strong>WIP</strong></p>
+<blockquote data-line="239" class="code-line">
+<p data-line="239" class="code-line">Follow the annotations from your schematic to put the keys in the correct order</p>
+</blockquote>
+<p data-line="241" class="code-line"><img src="./images/keys_placed.PNG" alt="Keys placed" class="loading" id="image-hash-2034033174">
+<img src="./images/4keys.PNG" alt="Zoom in" class="loading" id="image-hash-1083032470"></p>
+<h3 id="place-the-other-parts" data-line="244" class="code-line">Place the Other Parts</h3>
+<ul>
+<li data-line="246" class="code-line">Because this keyboard mostly uses surface mount components, they will mostly go on the back to hide them</li>
+<li data-line="247" class="code-line">To place a component on the back, click on the footprint and press <code>f</code>
+<ul>
+<li data-line="248" class="code-line">The text for the label should be backwards and in purple</li>
+</ul>
+</li>
+<li data-line="249" class="code-line">Flip all diodes to the back, and align them onto their key switch</li>
+<li data-line="250" class="code-line">Place the diode on the lower part of the key switch (opposite of the gold)</li>
+</ul>
+<p data-line="252" class="code-line"><img src="./images/diodes_placed.PNG" alt="Diodes placed" class="loading" id="image-hash--531054718"></p>
+<ul>
+<li data-line="254" class="code-line">Turning on <code>ratsnest</code> may be helpful for this part</li>
+<li data-line="255" class="code-line">Arrange the other parts on the back above the key switches
+<ul>
+<li data-line="256" class="code-line">All the components in the schematic that are near the microcontroller should go near the microcontroller</li>
+<li data-line="257" class="code-line">5 bypass capacitors should go near the microcontroller with the other going near the USB-C receptacle</li>
+</ul>
+</li>
+<li data-line="258" class="code-line">The crystal should go on the back as close as possible to the microcontroller pins it connects to</li>
+<li data-line="259" class="code-line">The Type-C connector should go on the front, it will be the highest component on the PCB</li>
+<li data-line="260" class="code-line">The switch can go on the front or back based on preference, I put it on the front</li>
+</ul>
+<p data-line="262" class="code-line"><img src="./images/uc_components.PNG" alt="Microcontroller circuit" class="loading" id="image-hash--1395008939">
+<img src="./images/tc_components.PNG" alt="Type-C circuit" class="loading" id="image-hash-1546648660"></p>
+<h3 id="adjust-your-circuit" data-line="265" class="code-line">Adjust your circuit</h3>
+<ul>
+<li data-line="267" class="code-line">With the <code>ratsnest</code> turned on, move the location of rows and cols on your microcontroller to reduce the number of ratsnests that overlap</li>
+<li data-line="268" class="code-line">After making a change, <code>Tools</code> &gt; <code>Update PCB From Schematic</code></li>
+</ul>
+<h3 id="set-the-track-width" data-line="270" class="code-line">Set the Track Width</h3>
+<ul>
+<li data-line="272" class="code-line">I use <a href="https://jlcpcb.com/" data-href="https://jlcpcb.com/">JLCPCB</a> to manufacture my PCBs, their minimum trace width is 5 mil (0.127 mm) with the same minimum spacing</li>
+</ul>
+<p data-line="274" class="code-line"><img src="./images/spacing.PNG" alt="JLCPCB min spacing" class="loading" id="image-hash--589011599"></p>
+<ul>
+<li data-line="276" class="code-line">The default .254 mm width does not need to be changed, but you can go down to .2 mm to have smaller traces</li>
+</ul>
+<h3 id="making-connections" data-line="278" class="code-line">Making connections</h3>
+<ul>
+<li data-line="280" class="code-line">To make a connection, use the bar on the right to select a layer
+<ul>
+<li data-line="281" class="code-line"><code>F.CU</code> for components on the front</li>
+<li data-line="282" class="code-line"><code>B.CU</code> for components on the back</li>
+</ul>
+</li>
+<li data-line="283" class="code-line">You must select the layer of the starting component to make a connection</li>
+<li data-line="284" class="code-line">With the correct layer selected, press <code>Route tracks</code></li>
+<li data-line="285" class="code-line">Connect all components, but do not connect any <code>GND</code> nets, those will all be taken care of in the end</li>
+</ul>
+<p data-line="287" class="code-line"><img src="./images/clk_connection.PNG" alt="Clock connection" class="loading" id="image-hash-650210499"></p>
+<ul>
+<li data-line="289" class="code-line">To make connections easier, click on the footprint and press <code>R</code> to rotate the component if that makes it easier</li>
+<li data-line="290" class="code-line">I recommend breaking out all the pins of the microcontroller before worrying about connecting the microcontroller to components</li>
+<li data-line="291" class="code-line">If traces are going to overlap, press <code>v</code> to insert a <code>via</code> between the front and the back to switch layers</li>
+</ul>
+<p data-line="293" class="code-line"><img src="./images/uc_breakout.PNG" alt="Microcontroller breakout" class="loading" id="image-hash-1352596910"></p>
+<p data-line="295" class="code-line"><strong>WIP</strong></p>
 
 </body></html>

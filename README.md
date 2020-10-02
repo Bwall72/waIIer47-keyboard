@@ -212,6 +212,16 @@ Designing a custom mechanical keyboard PCB using KiCad. The following was based 
 
 ## Creating the PCB
 
+### Set the Grid Size
+
+* Click the `Grid` dropdown menu on the top
+* `Edit User Grid`
+* Set `Size X` and `Size Y` to `0.254`
+
+![Grid Menu](./images/grid_menu.PNG)
+![Grid Size](./images/grid_size.PNG)
+
+
 ### Importing From the Schematic
 
 * Close the schematic and open `PCB Layout Editor`
@@ -223,5 +233,64 @@ Designing a custom mechanical keyboard PCB using KiCad. The following was based 
 ### Organizing your components
 
 * Arrange the keys in the same order as your circuit
+* The easiest way I found to do this is to use `ctrl + f` to search for the key annotations
+* I like to leave one _grid snap_ gap between each key, make sure all keys are evenly spaced on the grid
+* There should be a visible `+` sign between all groups for 4 adjacent keys
+
+> Follow the annotations from your schematic to put the keys in the correct order
+
+![Keys placed](./images/keys_placed.PNG)
+![Zoom in](./images/4keys.PNG)
+
+### Place the Other Parts
+
+* Because this keyboard mostly uses surface mount components, they will mostly go on the back to hide them
+* To place a component on the back, click on the footprint and press `f`
+  * The text for the label should be backwards and in purple
+* Flip all diodes to the back, and align them onto their key switch
+* Place the diode on the lower part of the key switch (opposite of the gold)
+
+![Diodes placed](./images/diodes_placed.PNG)
+
+* Turning on `ratsnest` may be helpful for this part
+* Arrange the other parts on the back above the key switches
+  * All the components in the schematic that are near the microcontroller should go near the microcontroller
+  * 5 bypass capacitors should go near the microcontroller with the other going near the USB-C receptacle
+* The crystal should go on the back as close as possible to the microcontroller pins it connects to
+* The Type-C connector should go on the front, it will be the highest component on the PCB
+* The switch can go on the front or back based on preference, I put it on the front
+
+![Microcontroller circuit](./images/uc_components.PNG)
+![Type-C circuit](./images/tc_components.PNG)
+
+### Adjust your circuit
+
+* With the `ratsnest` turned on, move the location of rows and cols on your microcontroller to reduce the number of ratsnests that overlap
+* After making a change, `Tools` > `Update PCB From Schematic`
+
+### Set the Track Width
+
+* I use [JLCPCB](https://jlcpcb.com/) to manufacture my PCBs, their minimum trace width is 5 mil (0.127 mm) with the same minimum spacing
+
+![JLCPCB min spacing](./images/spacing.PNG)
+
+* The default .254 mm width does not need to be changed, but you can go down to .2 mm to have smaller traces
+
+### Making connections
+
+* To make a connection, use the bar on the right to select a layer
+  * `F.CU` for components on the front
+  * `B.CU` for components on the back
+* You must select the layer of the starting component to make a connection
+* With the correct layer selected, press `Route tracks`
+* Connect all components, but do not connect any `GND` nets, those will all be taken care of in the end
+
+![Clock connection](./images/clk_connection.PNG)
+
+* To make connections easier, click on the footprint and press `R` to rotate the component if that makes it easier
+* I recommend breaking out all the pins of the microcontroller before worrying about connecting the microcontroller to components
+* If traces are going to overlap, press `v` to insert a `via` between the front and the back to switch layers
+
+![Microcontroller breakout](./images/uc_breakout.PNG)
 
 **WIP**
