@@ -293,4 +293,129 @@ Designing a custom mechanical keyboard PCB using KiCad. The following was based 
 
 ![Microcontroller breakout](./images/uc_breakout.PNG)
 
+### Create the Remaining Connections
+
+![PCB Row Connections](./images/pcbrows.PNG)
+
+Connect the diodes for all keys in the same row
+
+![PCB Col Connections](./images/pcbcols.PNG)
+
+Connect the switches in the same column
+
+![USB Receptacle Connections](./images/usbcpcb.PNG)
+
+Break out connections from the USB-C receptacle
+
+### Add Mounting Holes
+
+* This desing suspends the PCB from standoffs, to use them, m3 screw holes are added to the PCB
+* `Place` > `Footprint` > `MountingHole_3.2mm_M3`
+* I personally put 3 screw holes on each side and one in the middle
+  * Adding more holes can make the PCB flex less
+
+![Mounting Holes](./images/mountingholes.PNG)
+
+### Creating an outline for the PCB
+
+* Select the `Edge.Cuts` layer
+* Select the `Add graphic lines` tool
+* Draw a **fully connected** rectangle around all your components
+* The USB-C connector should be on the outer limits of the PCB on the top, and the screw holes should be the limit on the sides
+* The smaller the PCB, the cheeper it will be to fabricate
+
+![Edge Cuts](./images/edgecuts.PNG)
+
+* After creating the outline, try opening `View` > `3D Viewer`
+* If you see the folowing error, look for any missing connections in your edge cuts or extra lines
+
+![Edge Cut Error](./images/edgecuterror.PNG)
+
+* Once you fix all the errors, you should be able to view a 3D rendering of the PCB
+
+![3D View](./images/3dview.PNG)
+
+### Adding a Ground Plane
+
+* In the previous steps, no connections were made to ground, we will resolve them all now
+* On the right side, select the `Add filled zones` tool on the back side and the `GND` net
+
+![Filled zone settings](./images/filled_zone_settings.PNG)
+
+* Select the top left corner > top right corner > bottom right corner > **double click on the lower left corner**
+* You should see:
+
+![Bottom filled zone](./images/bottom_fill.PNG)
+
+* By zooming in, you can see connections made to ground nets
+
+![Bottom filled zone zoom in](./images/bottom_zone_zoom.PNG)
+
+* Repeat the process on the top side
+
+![Top zone](./images/top_zone.PNG)
+
+> Press the `Do not show filled zones` button on the left side to hide the filled zones
+
+### Run the Design Rules Check
+
+* Press `Perform Design Rules Check` on the top bar
+* Select the `Refill all zones before running DRC` > `Run DRC`
+* Resolve any errors that show up
+* The most common errors are:
+  * Missing connections to ground:
+    * It is possible that your filled zones cannot get around a trace or component, you may need to add some manual ground connections
+  * Traces too close:
+    * Re-route the traces to increase the distance between the traces
+  * Traces too close to holes in PCB
+    * Move the trace
+* When there are no design rule check violations, the PCB is complete
+
+![Design rules check](./images/drc.PNG)
+
+
+## Submitting PCB for Fabrication
+
+### Generate Gerber Files
+
+* [Refer to this page from JLCPCB for instructions](https://support.jlcpcb.com/article/44-how-to-export-kicad-pcb-to-gerber-files)
+* `File` > `Plot`
+* Select a folder for `Output Directory`
+* On the front page, leave all the default settings and press `Plot`
+* Press `Generate Drill Files...`
+  * Click the `Gerber` option on the left
+  * Press `Generate Drill File`
+
+![Plot](./images/plot.PNG)
+![Drill](./images/drill.PNG)
+
+
+### Submitting to JLCPCB
+(Instructions will also be shown for [OSHPARK](https://oshpark.com/), but they are much more expensive for large PCBs)
+
+* Create a `.zip` from the output folder
+* Go to [JLCPCB](www.jlcpcb.com)
+* Press `QUOTE NOW`
+* `Add your gerber file` > Select your `.zip`
+* You can leave all the default options unless you want a different color
+* Proceeded with checkout, they will verify your that your design complies with their manufacturing process and has all the needed files
+* \$10.40 + 16 for Fedex Shipping
+* Total time to receive your PCB should be less than two weeks (unless shipping by boat)
+
+![JLCPCB gerber upload](./images/jlc_options.PNG)
+
+![JLCPCB Quote](./images/jlcpcb_quote.PNG)
+
+### OSHPARK
+
+* PCBs from OSHPARK are more expensive, but higher quality. For large runs, it may make sense to use OSHPARK (you also have to be fine with a purple PCB)
+* Go to [wwww.oshpark.com](www.oshpark.com)
+* Upload your `.zip`
+* I saw that their quote was 5 times as much for 2 fiewer PCBs and did not continue...
+
+
+![OSHPARK Quote](./images/osh_quote.PNG)
+
+
+
 **WIP**
