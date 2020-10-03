@@ -35,13 +35,13 @@ Revision 2 Green, Revision 1 White, Back top, Front bottom
 | M3 Standoff | \$0.033 | 7 | \$0.233
 | Total ||| \$35.89
 
->
-  Notes
 
-  * Shipping costs are excluded from the BOM
-  * Currently, I am reusing keycaps, so those are not included in the BOM
-    * I am part of the group buy for [KAT Mizu Keycaps](https://old.reddit.com/r/mechmarket/comments/i6aaga/ic_kat_mizu_coming_september_1st/), which would add \$64.44 to the total
-  * Kailh Speed Copper are my favorite switches, but they cannot be recomended for this keyboard. They are missing the pins to be used in a plateless keyboard like this one.
+>Notes
+>
+>* Shipping costs are excluded from the BOM
+>* Currently, I am reusing keycaps, so those are not included in the BOM
+>  * I am part of the group buy for [KAT Mizu Keycaps](https://old.reddit.com/r/mechmarket/comments/i6aaga/ic_kat_mizu_coming_september_1st/), which would add \$64.44 to the total
+>* Kailh Speed Copper are my favorite switches, but they cannot be recomended for this keyboard. They are missing the pins to be used in a plateless keyboard like this one.
 
 # PCB Tutorial
 Designing a custom mechanical keyboard PCB using KiCad. The following was based on [Ruiqi Mao's Tutorial](https://github.com/ruiqimao/keyboard-pcb-guide)
