@@ -10,268 +10,131 @@
 
 </head>
 <body class="markdown-body">
-<h1 id="waiier47-mechanical-keyboard-3" data-line="0" class="code-line">WaIIer47 Mechanical Keyboard</h1>
+<h1 id="waiier47-mechanical-keyboard-1" data-line="0" class="code-line">WaIIer47 Mechanical Keyboard</h1>
 <p data-line="1" class="code-line">Custom design 47 key ortholinear keyboard with PCB, and Atmega32u4 Microcontroller</p>
-<h2 id="images-3" data-line="3" class="code-line">Images</h2>
-<p data-line="5" class="code-line"><img src="./images/both.png" alt="Both Keyboards" class="loading" id="image-hash--1733373047">
+<p data-line="3" class="code-line"><img src="./images/both.png" alt="Both Keyboards" class="loading" id="image-hash--1733373047">
 Revision 2 Green, Revision 1 White, Back top, Front bottom</p>
-<p data-line="8" class="code-line"><img src="./images/rev2.jpg" alt="Revision 2" class="loading" id="image-hash-104068783">
+<p data-line="6" class="code-line"><img src="./images/rev2.jpg" alt="Revision 2" class="loading" id="image-hash-104068783">
 <img src="./images/rev1.jpg" alt="Revision 1" class="loading" id="image-hash-103145262"></p>
-<h1 id="bill-of-materials-3" data-line="11" class="code-line">Bill Of Materials</h1>
+<h1 id="pcb-tutorial-1" data-line="8" class="code-line">PCB Tutorial</h1>
+<p data-line="9" class="code-line">Designing a custom mechanical keyboard PCB using KiCad. The following was based on <a href="https://github.com/ruiqimao/keyboard-pcb-guide" data-href="https://github.com/ruiqimao/keyboard-pcb-guide">Ruiqi Mao's Tutorial</a></p>
+<h2 id="download-kicad-and-install-the-mechanical-keyboard-libraries-1" data-line="11" class="code-line">Download Kicad and Install the Mechanical Keyboard Libraries</h2>
 <ul>
-<li data-line="13" class="code-line">See <a href="./BOM.md" data-href="./BOM.md">BOM.md</a></li>
-<li data-line="14" class="code-line">The total cost for a Rev 2 PCB keybarod is:</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Unit Price</th>
-<th>Units</th>
-<th>Total</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Capacitor 22 pF</td>
-<td>$0.043</td>
-<td>2</td>
-<td>$0.086</td>
-</tr>
-<tr>
-<td>Capacitor 0.1 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">μ</span></span></span></span></eq>F</td>
-<td>$0.0216</td>
-<td>5</td>
-<td>$0.108</td>
-</tr>
-<tr>
-<td>Capacitor 1.0 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">μ</span></span></span></span></eq>F</td>
-<td>$0.055</td>
-<td>1</td>
-<td>$0.055</td>
-</tr>
-<tr>
-<td>Diode</td>
-<td>$.02446</td>
-<td>47</td>
-<td>$1.223</td>
-</tr>
-<tr>
-<td>LED</td>
-<td>$0.159</td>
-<td>1</td>
-<td>$0.159</td>
-</tr>
-<tr>
-<td>USB-C Receptacle</td>
-<td>$1.37</td>
-<td>1</td>
-<td>$1.37</td>
-</tr>
-<tr>
-<td>Kalih Speed Copper Key Switch</td>
-<td>$0.538</td>
-<td>47</td>
-<td>$25.286</td>
-</tr>
-<tr>
-<td>Resistor 10 k<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq></td>
-<td>$0.0071</td>
-<td>2</td>
-<td>$0.0142</td>
-</tr>
-<tr>
-<td>Resistor 22 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq></td>
-<td>$0.0071</td>
-<td>2</td>
-<td>$0.0142</td>
-</tr>
-<tr>
-<td>Resistor 5.1 k<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq></td>
-<td>$0.0071</td>
-<td>2</td>
-<td>$0.0142</td>
-</tr>
-<tr>
-<td>Resistor 220 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq></td>
-<td>$0.0071</td>
-<td>1</td>
-<td>$0.0071</td>
-</tr>
-<tr>
-<td>Push Button Switch</td>
-<td>$0.59</td>
-<td>1</td>
-<td>$0.59</td>
-</tr>
-<tr>
-<td>Atmega32U4</td>
-<td>$4.08</td>
-<td>1</td>
-<td>$4.08</td>
-</tr>
-<tr>
-<td>Crystal Oscillator</td>
-<td>$0.36</td>
-<td>1</td>
-<td>$0.36</td>
-</tr>
-<tr>
-<td>PCB</td>
-<td>$2.08</td>
-<td>2</td>
-<td>$2.08</td>
-</tr>
-<tr>
-<td>M3 Screws</td>
-<td>$0.033</td>
-<td>7</td>
-<td>$0.233</td>
-</tr>
-<tr>
-<td>M3 Standoff</td>
-<td>$0.033</td>
-<td>7</td>
-<td>$0.233</td>
-</tr>
-<tr>
-<td>Total</td>
-<td></td>
-<td></td>
-<td>$35.89</td>
-</tr>
-</tbody>
-</table>
-<blockquote data-line="37" class="code-line"></blockquote>
-<p data-line="38" class="code-line">Notes</p>
+<li data-line="13" class="code-line">
+<p data-line="13" class="code-line">Download and install Kicad from <a href="https://kicad-pcb.org/" data-href="https://kicad-pcb.org/">https://kicad-pcb.org/</a></p>
 <ul>
-<li data-line="40" class="code-line">Shipping costs are excluded from the BOM</li>
-<li data-line="41" class="code-line">Currently, I am reusing keycaps, so those are not included in the BOM
-<ul>
-<li data-line="42" class="code-line">I am part of the group buy for <a href="https://old.reddit.com/r/mechmarket/comments/i6aaga/ic_kat_mizu_coming_september_1st/" data-href="https://old.reddit.com/r/mechmarket/comments/i6aaga/ic_kat_mizu_coming_september_1st/">KAT Mizu Keycaps</a>, which would add $64.44 to the total</li>
+<li data-line="14" class="code-line">During installation, choose to download Kicad's default libraries</li>
 </ul>
 </li>
-<li data-line="43" class="code-line">Kailh Speed Copper are my favorite switches, but they cannot be recomended for this keyboard. They are missing the pins to be used in a plateless keyboard like this one.</li>
+<li data-line="15" class="code-line">
+<p data-line="15" class="code-line">Clone the following two repositories (or download zip and extract):</p>
+<ul>
+<li data-line="16" class="code-line"><code>keyboard_parts.pretty</code> from <a href="https://github.com/tmk/keyboard_parts.pretty" data-href="https://github.com/tmk/keyboard_parts.pretty">https://github.com/tmk/keyboard_parts.pretty</a></li>
+<li data-line="17" class="code-line"><code>keebs.pretty</code> from <a href="https://github.com/egladman/keebs.pretty" data-href="https://github.com/egladman/keebs.pretty">https://github.com/egladman/keebs.pretty</a></li>
+<li data-line="18" class="code-line"><code>Type-C.pretty</code> from <a href="https://github.com/ai03-2725/Type-C.pretty" data-href="https://github.com/ai03-2725/Type-C.pretty">https://github.com/ai03-2725/Type-C.pretty</a></li>
+<li data-line="19" class="code-line"><code>kicad_lib_tmk</code>.lib <a href="https://github.com/tmk/kicad_lib_tmk" data-href="https://github.com/tmk/kicad_lib_tmk">https://github.com/tmk/kicad_lib_tmk</a></li>
 </ul>
-<h1 id="pcb-tutorial-3" data-line="45" class="code-line">PCB Tutorial</h1>
-<p data-line="46" class="code-line">Designing a custom mechanical keyboard PCB using KiCad. The following was based on <a href="https://github.com/ruiqimao/keyboard-pcb-guide" data-href="https://github.com/ruiqimao/keyboard-pcb-guide">Ruiqi Mao's Tutorial</a></p>
-<h2 id="download-kicad-and-install-the-mechanical-keyboard-libraries-3" data-line="48" class="code-line">Download Kicad and Install the Mechanical Keyboard Libraries</h2>
+<p data-line="21" class="code-line"><img src="./images/kicad_libraries.PNG" alt="Kicad Libraries" class="loading" id="image-hash-902868848"></p>
+</li>
+<li data-line="23" class="code-line">
+<p data-line="23" class="code-line">Open <code>Kicad</code> &gt; <code>Preferences</code> &gt; <code>Manage Footprint Libraries</code></p>
 <ul>
-<li data-line="50" class="code-line">
-<p data-line="50" class="code-line">Download and install Kicad from <a href="https://kicad-pcb.org/" data-href="https://kicad-pcb.org/">https://kicad-pcb.org/</a></p>
+<li data-line="24" class="code-line">In the <code>Global Libraries</code> tab, press the folder icon to <code>Add existing library to table</code></li>
+<li data-line="25" class="code-line">Navigate to where you cloned the the libraries, click on the <code>keebs.pretty</code> and press <code>OK</code>
 <ul>
-<li data-line="51" class="code-line">During installation, choose to download Kicad's default libraries</li>
+<li data-line="26" class="code-line">Do the same for <code>keyboard_parts.pretty</code> and <code>Type-C.pretty</code></li>
 </ul>
 </li>
-<li data-line="52" class="code-line">
-<p data-line="52" class="code-line">Clone the following two repositories (or download zip and extract):</p>
-<ul>
-<li data-line="53" class="code-line"><code>keyboard_parts.pretty</code> from <a href="https://github.com/tmk/keyboard_parts.pretty" data-href="https://github.com/tmk/keyboard_parts.pretty">https://github.com/tmk/keyboard_parts.pretty</a></li>
-<li data-line="54" class="code-line"><code>keebs.pretty</code> from <a href="https://github.com/egladman/keebs.pretty" data-href="https://github.com/egladman/keebs.pretty">https://github.com/egladman/keebs.pretty</a></li>
-<li data-line="55" class="code-line"><code>Type-C.pretty</code> from <a href="https://github.com/ai03-2725/Type-C.pretty" data-href="https://github.com/ai03-2725/Type-C.pretty">https://github.com/ai03-2725/Type-C.pretty</a></li>
-<li data-line="56" class="code-line"><code>kicad_lib_tmk</code>.lib <a href="https://github.com/tmk/kicad_lib_tmk" data-href="https://github.com/tmk/kicad_lib_tmk">https://github.com/tmk/kicad_lib_tmk</a></li>
+<li data-line="27" class="code-line">If done successfully, you should see the following in the <code>Global Libraries</code> tab:</li>
 </ul>
-<p data-line="58" class="code-line"><img src="./images/kicad_libraries.PNG" alt="Kicad Libraries" class="loading" id="image-hash-902868848"></p>
-</li>
-<li data-line="60" class="code-line">
-<p data-line="60" class="code-line">Open <code>Kicad</code> &gt; <code>Preferences</code> &gt; <code>Manage Footprint Libraries</code></p>
-<ul>
-<li data-line="61" class="code-line">In the <code>Global Libraries</code> tab, press the folder icon to <code>Add existing library to table</code></li>
-<li data-line="62" class="code-line">Navigate to where you cloned the the libraries, click on the <code>keebs.pretty</code> and press <code>OK</code>
-<ul>
-<li data-line="63" class="code-line">Do the same for <code>keyboard_parts.pretty</code> and <code>Type-C.pretty</code></li>
-</ul>
-</li>
-<li data-line="64" class="code-line">If done successfully, you should see the following in the <code>Global Libraries</code> tab:</li>
-</ul>
-<p data-line="66" class="code-line"><img src="./images/global_footprint_libraries.PNG" alt="Global Footprint Libraries" class="loading" id="image-hash-1170361573">
+<p data-line="29" class="code-line"><img src="./images/global_footprint_libraries.PNG" alt="Global Footprint Libraries" class="loading" id="image-hash-1170361573">
 <img src="./images/manage_footprint_libraries.PNG" alt="Manage Footprint Libraries" class="loading" id="image-hash--956088153"></p>
 </li>
-<li data-line="69" class="code-line">
-<p data-line="69" class="code-line">Back in the Kicad Menu, <code>Preferences</code> &gt; <code>Mange Symbol Libraries</code></p>
+<li data-line="32" class="code-line">
+<p data-line="32" class="code-line">Back in the Kicad Menu, <code>Preferences</code> &gt; <code>Mange Symbol Libraries</code></p>
 <ul>
-<li data-line="70" class="code-line">In the <code>Global Libraries</code> tab, press the folder icon to <code>Add existing library to table</code></li>
-<li data-line="71" class="code-line">Navigate to where you cloned <code>kicad_lib_tmk</code> and select <code>keyboard_parts.lib</code></li>
-<li data-line="72" class="code-line">Navigate to <code>Type-C.pretty</code> and select <code>Type-C.lib</code></li>
-<li data-line="73" class="code-line">If done successfully, you should see the following:</li>
+<li data-line="33" class="code-line">In the <code>Global Libraries</code> tab, press the folder icon to <code>Add existing library to table</code></li>
+<li data-line="34" class="code-line">Navigate to where you cloned <code>kicad_lib_tmk</code> and select <code>keyboard_parts.lib</code></li>
+<li data-line="35" class="code-line">Navigate to <code>Type-C.pretty</code> and select <code>Type-C.lib</code></li>
+<li data-line="36" class="code-line">If done successfully, you should see the following:</li>
 </ul>
-<p data-line="75" class="code-line"><img src="./images/global_symbol_libraries.PNG" alt="Global Symbol Libraries" class="loading" id="image-hash--1813251204"></p>
-</li>
-</ul>
-<h2 id="creating-the-schematic-file-3" data-line="77" class="code-line">Creating The Schematic File</h2>
-<ul>
-<li data-line="79" class="code-line">
-<p data-line="79" class="code-line">In Kicad: <code>file</code> &gt; <code>New</code> &gt; <code>New Project</code></p>
-<ul>
-<li data-line="80" class="code-line">Create a new Folder for the project, and give a name for the project (I am using <code>tutorial_keyboard</code>)</li>
-<li data-line="81" class="code-line">Press <code>Save</code></li>
-<li data-line="82" class="code-line">On the left side, you should now see 3 files:
-<ul>
-<li data-line="83" class="code-line"><code>tutorial_keyboard.kicad_pcb</code>: The PCB file</li>
-<li data-line="84" class="code-line"><code>tutorial_keyboard.pro</code>: The project file, we will not be using this</li>
-<li data-line="85" class="code-line"><code>tutorial_keyboard.sch</code>: The schematic file</li>
-</ul>
+<p data-line="38" class="code-line"><img src="./images/global_symbol_libraries.PNG" alt="Global Symbol Libraries" class="loading" id="image-hash--1813251204"></p>
 </li>
 </ul>
-<p data-line="87" class="code-line"><img src="./images/project_files.PNG" alt="Project Files" class="loading" id="image-hash-113557951"></p>
-</li>
-<li data-line="89" class="code-line">
-<p data-line="89" class="code-line">Click on the <code>Schematic Layout Editor</code> button</p>
-</li>
-<li data-line="90" class="code-line">
-<p data-line="90" class="code-line">Because this schematic will be large, increase the paper size by going to <code>file</code> &gt; <code>Page Settings...</code> then selecting the <code>C</code> page size</p>
+<h2 id="creating-the-schematic-file-1" data-line="40" class="code-line">Creating The Schematic File</h2>
+<ul>
+<li data-line="42" class="code-line">
+<p data-line="42" class="code-line">In Kicad: <code>file</code> &gt; <code>New</code> &gt; <code>New Project</code></p>
+<ul>
+<li data-line="43" class="code-line">Create a new Folder for the project, and give a name for the project (I am using <code>tutorial_keyboard</code>)</li>
+<li data-line="44" class="code-line">Press <code>Save</code></li>
+<li data-line="45" class="code-line">On the left side, you should now see 3 files:
+<ul>
+<li data-line="46" class="code-line"><code>tutorial_keyboard.kicad_pcb</code>: The PCB file</li>
+<li data-line="47" class="code-line"><code>tutorial_keyboard.pro</code>: The project file, we will not be using this</li>
+<li data-line="48" class="code-line"><code>tutorial_keyboard.sch</code>: The schematic file</li>
+</ul>
 </li>
 </ul>
-<h2 id="placing-components-on-the-schematic-3" data-line="92" class="code-line">Placing Components on the Schematic</h2>
-<ul>
-<li data-line="94" class="code-line">
-<p data-line="94" class="code-line">To place a part, press the <code>Place symbol</code> button on the right side</p>
+<p data-line="50" class="code-line"><img src="./images/project_files.PNG" alt="Project Files" class="loading" id="image-hash-113557951"></p>
 </li>
-<li data-line="95" class="code-line">
-<p data-line="95" class="code-line">For the microcontroller:</p>
+<li data-line="52" class="code-line">
+<p data-line="52" class="code-line">Click on the <code>Schematic Layout Editor</code> button</p>
+</li>
+<li data-line="53" class="code-line">
+<p data-line="53" class="code-line">Because this schematic will be large, increase the paper size by going to <code>file</code> &gt; <code>Page Settings...</code> then selecting the <code>C</code> page size</p>
+</li>
+</ul>
+<h2 id="placing-components-on-the-schematic-1" data-line="55" class="code-line">Placing Components on the Schematic</h2>
 <ul>
-<li data-line="96" class="code-line"><code>Place symbol</code> and click on the page &gt; expand <code>keybord_parts</code> &gt; select <code>ATMEGA32U4</code> &gt; press <code>OK</code> &gt; Click on the sheet to place the component</li>
-<li data-line="97" class="code-line">You should now see the component placed on your page with the label U?
+<li data-line="57" class="code-line">
+<p data-line="57" class="code-line">To place a part, press the <code>Place symbol</code> button on the right side</p>
+</li>
+<li data-line="58" class="code-line">
+<p data-line="58" class="code-line">For the microcontroller:</p>
+<ul>
+<li data-line="59" class="code-line"><code>Place symbol</code> and click on the page &gt; expand <code>keybord_parts</code> &gt; select <code>ATMEGA32U4</code> &gt; press <code>OK</code> &gt; Click on the sheet to place the component</li>
+<li data-line="60" class="code-line">You should now see the component placed on your page with the label U?
 <img src="./images/atmega.PNG" alt="Atmega Symbol" class="loading" id="image-hash-63789517">
 <img src="./images/u.PNG" alt="U?" class="loading" id="image-hash-995295971"></li>
 </ul>
 </li>
-<li data-line="100" class="code-line">
-<p data-line="100" class="code-line">Place the following components as required by the <a href="http://ww1.microchip.com/downloads/en/devicedoc/atmel-7766-8-bit-avr-atmega16u4-32u4_datasheet.pdf" data-href="http://ww1.microchip.com/downloads/en/devicedoc/atmel-7766-8-bit-avr-atmega16u4-32u4_datasheet.pdf">datasheet</a></p>
+<li data-line="63" class="code-line">
+<p data-line="63" class="code-line">Place the following components as required by the <a href="http://ww1.microchip.com/downloads/en/devicedoc/atmel-7766-8-bit-avr-atmega16u4-32u4_datasheet.pdf" data-href="http://ww1.microchip.com/downloads/en/devicedoc/atmel-7766-8-bit-avr-atmega16u4-32u4_datasheet.pdf">datasheet</a></p>
 <ul>
-<li data-line="101" class="code-line">A 10 k<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq> resustor near <code>HWB/PE2</code>
+<li data-line="64" class="code-line">A 10 k<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq> resustor near <code>HWB/PE2</code>
 <ul>
-<li data-line="102" class="code-line"><code>Place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>R</code> &gt; <code>Ok</code>
+<li data-line="65" class="code-line"><code>Place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>R</code> &gt; <code>Ok</code>
 <ul>
-<li data-line="103" class="code-line">Press <code>r</code> before placing the component, or while hovering over the component after placing to rotate it</li>
-<li data-line="104" class="code-line">Hover over it and press <code>e</code> to <code>Edit Value Field</code></li>
-<li data-line="105" class="code-line">Change the <code>Text</code> field to say <code>10k</code>
+<li data-line="66" class="code-line">Press <code>r</code> before placing the component, or while hovering over the component after placing to rotate it</li>
+<li data-line="67" class="code-line">Hover over it and press <code>e</code> to <code>Edit Value Field</code></li>
+<li data-line="68" class="code-line">Change the <code>Text</code> field to say <code>10k</code>
 <img src="./images/r10k.PNG" alt="R10k" class="loading" id="image-hash--752908318"></li>
 </ul>
 </li>
 </ul>
 </li>
-<li data-line="107" class="code-line">A 1 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">μ</span></span></span></span></eq>F capacitor on <code>UCap</code>
+<li data-line="70" class="code-line">A 1 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">μ</span></span></span></span></eq>F capacitor on <code>UCap</code>
 <ul>
-<li data-line="108" class="code-line"><code>place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>C</code> &gt; <code>Ok</code></li>
-<li data-line="109" class="code-line">Change the its value to <code>1uF</code>
+<li data-line="71" class="code-line"><code>place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>C</code> &gt; <code>Ok</code></li>
+<li data-line="72" class="code-line">Change the its value to <code>1uF</code>
 <img src="./images/ucap.PNG" alt="UCap" class="loading" id="image-hash--1281454811">
 <img src="./images/ucap_datasheet.PNG" alt="UCap datasheet" class="loading" id="image-hash-1298563099"></li>
 </ul>
 </li>
 </ul>
 </li>
-<li data-line="112" class="code-line">
-<p data-line="112" class="code-line">Connect <code>Vcc</code> and <code>GND</code></p>
+<li data-line="75" class="code-line">
+<p data-line="75" class="code-line">Connect <code>Vcc</code> and <code>GND</code></p>
 <ul>
-<li data-line="113" class="code-line">On the right side, slect <code>Place power port</code> &gt; click on the page</li>
-<li data-line="114" class="code-line">Expand the <code>power</code> library and select &gt; <code>VCC</code> &gt; <code>Ok</code></li>
-<li data-line="115" class="code-line">Place the VCC flag near <code>AVCC</code>
+<li data-line="76" class="code-line">On the right side, slect <code>Place power port</code> &gt; click on the page</li>
+<li data-line="77" class="code-line">Expand the <code>power</code> library and select &gt; <code>VCC</code> &gt; <code>Ok</code></li>
+<li data-line="78" class="code-line">Place the VCC flag near <code>AVCC</code>
 <ul>
-<li data-line="116" class="code-line">On the right, click the <code>Place wire</code> icon</li>
-<li data-line="117" class="code-line">Click at the empty circle on <code>AVCC</code> and make a connection to the <code>VCC</code> flag
+<li data-line="79" class="code-line">On the right, click the <code>Place wire</code> icon</li>
+<li data-line="80" class="code-line">Click at the empty circle on <code>AVCC</code> and make a connection to the <code>VCC</code> flag
 <img src="./images/AVCC.PNG" alt="AVCC Connection" class="loading" id="image-hash--1266357955"></li>
-<li data-line="119" class="code-line">Repeat for:
+<li data-line="82" class="code-line">Repeat for:
 <table>
 <thead>
 <tr>
@@ -307,20 +170,20 @@ Revision 2 Green, Revision 1 White, Back top, Front bottom</p>
 </tbody>
 </table>
 </li>
-<li data-line="128" class="code-line">Make sure there are 6 total connections to <code>VCC</code></li>
-<li data-line="129" class="code-line">Individual connections to <code>VCC</code> in the schematic do not need to be connected together</li>
-<li data-line="130" class="code-line">Connect <code>VCC</code> to a power flag
+<li data-line="91" class="code-line">Make sure there are 6 total connections to <code>VCC</code></li>
+<li data-line="92" class="code-line">Individual connections to <code>VCC</code> in the schematic do not need to be connected together</li>
+<li data-line="93" class="code-line">Connect <code>VCC</code> to a power flag
 <ul>
-<li data-line="131" class="code-line"><code>Place symbol</code> &gt; Search for <code>PWR_FLAG</code> &gt; <code>PWR_FLAG</code></li>
-<li data-line="132" class="code-line">Connect the <code>PWR_FLAG</code> to <code>VCC</code>
+<li data-line="94" class="code-line"><code>Place symbol</code> &gt; Search for <code>PWR_FLAG</code> &gt; <code>PWR_FLAG</code></li>
+<li data-line="95" class="code-line">Connect the <code>PWR_FLAG</code> to <code>VCC</code>
 <img src="./images/power_flag.PNG" alt="Power Flag" class="loading" id="image-hash-578174478"></li>
 </ul>
 </li>
 </ul>
 </li>
-<li data-line="134" class="code-line"><code>Place power port</code> &gt; <code>GND</code> (<code>Power flag, ground</code> from the <code>s</code>power` library)
+<li data-line="97" class="code-line"><code>Place power port</code> &gt; <code>GND</code> (<code>Power flag, ground</code> from the <code>s</code>power` library)
 <ul>
-<li data-line="135" class="code-line">Create a connection to <code>GND</code> on the following pins:
+<li data-line="98" class="code-line">Create a connection to <code>GND</code> on the following pins:
 <table>
 <thead>
 <tr>
@@ -352,47 +215,47 @@ Revision 2 Green, Revision 1 White, Back top, Front bottom</p>
 </tbody>
 </table>
 </li>
-<li data-line="143" class="code-line">Additionally, connect the other end of the capacitor and resistor to <code>GND</code></li>
-<li data-line="144" class="code-line">Make sure there are 5 connections to <code>GND</code>
+<li data-line="106" class="code-line">Additionally, connect the other end of the capacitor and resistor to <code>GND</code></li>
+<li data-line="107" class="code-line">Make sure there are 5 connections to <code>GND</code>
 <img src="./images/vcc_gnd.PNG" alt="VCC and Ground on uc" class="loading" id="image-hash-1390750882"></li>
 </ul>
 </li>
 </ul>
 </li>
-<li data-line="147" class="code-line">
-<p data-line="147" class="code-line">If there are any overlapping components or labels, press <code>m</code> over the component/label to move it somewhere else</p>
+<li data-line="110" class="code-line">
+<p data-line="110" class="code-line">If there are any overlapping components or labels, press <code>m</code> over the component/label to move it somewhere else</p>
 <ul>
-<li data-line="148" class="code-line">You will have to remake any connections</li>
+<li data-line="111" class="code-line">You will have to remake any connections</li>
 </ul>
 </li>
-<li data-line="149" class="code-line">
-<p data-line="149" class="code-line">Reset Circuit</p>
+<li data-line="112" class="code-line">
+<p data-line="112" class="code-line">Reset Circuit</p>
 <ul>
-<li data-line="150" class="code-line">The following allows for a manual reset button that (If you do not want a reset button, connect <code>RESET</code> to <code>VCC</code>)</li>
-<li data-line="151" class="code-line">Move to an open part of the page</li>
-<li data-line="152" class="code-line"><code>Place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>SW_PUSH</code></li>
-<li data-line="153" class="code-line">We want the voltage supplied to the reset pin to be <code>High (5V)</code> normally, and ground when pushed to reset the microcontroller</li>
-<li data-line="154" class="code-line">Connect the left side to <code>GND</code></li>
-<li data-line="155" class="code-line">Create a connection between <code>VCC</code> -&gt; 10 k<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq> resistor -&gt; switch-s right pin
+<li data-line="113" class="code-line">The following allows for a manual reset button that (If you do not want a reset button, connect <code>RESET</code> to <code>VCC</code>)</li>
+<li data-line="114" class="code-line">Move to an open part of the page</li>
+<li data-line="115" class="code-line"><code>Place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>SW_PUSH</code></li>
+<li data-line="116" class="code-line">We want the voltage supplied to the reset pin to be <code>High (5V)</code> normally, and ground when pushed to reset the microcontroller</li>
+<li data-line="117" class="code-line">Connect the left side to <code>GND</code></li>
+<li data-line="118" class="code-line">Create a connection between <code>VCC</code> -&gt; 10 k<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq> resistor -&gt; switch-s right pin
 <img src="./images/reset_circuit.PNG" alt="Reset Circuit" class="loading" id="image-hash-457572583"></li>
-<li data-line="157" class="code-line">Place a flag on the right side:
+<li data-line="120" class="code-line">Place a flag on the right side:
 <ul>
-<li data-line="158" class="code-line">In the right menu: <code>Place net label</code></li>
-<li data-line="159" class="code-line">Give it the name <code>Reset</code></li>
-<li data-line="160" class="code-line">Connect it to the wire on the right side</li>
-<li data-line="161" class="code-line">Place a net label with the name <code>Reset</code> on the <code>RESET</code> pin (pin 13) of the microcontroller</li>
-<li data-line="162" class="code-line">The reset circuit is now connected to the microcontroller
+<li data-line="121" class="code-line">In the right menu: <code>Place net label</code></li>
+<li data-line="122" class="code-line">Give it the name <code>Reset</code></li>
+<li data-line="123" class="code-line">Connect it to the wire on the right side</li>
+<li data-line="124" class="code-line">Place a net label with the name <code>Reset</code> on the <code>RESET</code> pin (pin 13) of the microcontroller</li>
+<li data-line="125" class="code-line">The reset circuit is now connected to the microcontroller
 <img src="./images/net_connection.PNG" alt="Reset net connection" class="loading" id="image-hash-1384242920"></li>
 </ul>
 </li>
 </ul>
 </li>
-<li data-line="164" class="code-line">
-<p data-line="164" class="code-line">USB Type-C Circuit</p>
+<li data-line="127" class="code-line">
+<p data-line="127" class="code-line">USB Type-C Circuit</p>
 <ul>
-<li data-line="165" class="code-line">This keyboard will connect to a computer using a USB-C connector in USB 2.0 Mode</li>
-<li data-line="166" class="code-line"><code>Place symbol</code> &gt; <code>Connector</code> &gt; <code>USB_C_Receptacle_USB2.0</code></li>
-<li data-line="167" class="code-line">Make the following connections</li>
+<li data-line="128" class="code-line">This keyboard will connect to a computer using a USB-C connector in USB 2.0 Mode</li>
+<li data-line="129" class="code-line"><code>Place symbol</code> &gt; <code>Connector</code> &gt; <code>USB_C_Receptacle_USB2.0</code></li>
+<li data-line="130" class="code-line">Make the following connections</li>
 </ul>
 <table>
 <thead>
@@ -440,84 +303,84 @@ Revision 2 Green, Revision 1 White, Back top, Front bottom</p>
 </tr>
 </tbody>
 </table>
-<p data-line="180" class="code-line"><img src="./images/usbc_receptacle.PNG" alt="USB-C Receptacle" class="loading" id="image-hash-1813365186"></p>
+<p data-line="143" class="code-line"><img src="./images/usbc_receptacle.PNG" alt="USB-C Receptacle" class="loading" id="image-hash-1813365186"></p>
 <ul>
-<li data-line="181" class="code-line">On the microcontroller, connect <code>D-</code> (pin 3) to the <code>D-</code> net and <code>D+</code> (pin 4) to the <code>D+</code> net
+<li data-line="144" class="code-line">On the microcontroller, connect <code>D-</code> (pin 3) to the <code>D-</code> net and <code>D+</code> (pin 4) to the <code>D+</code> net
 <img src="./images/d-_d+.PNG" alt="D- and D+ connections" class="loading" id="image-hash-2141712619"></li>
 </ul>
 </li>
-<li data-line="184" class="code-line">
-<p data-line="184" class="code-line">Crystal Oscillator Circuit</p>
+<li data-line="147" class="code-line">
+<p data-line="147" class="code-line">Crystal Oscillator Circuit</p>
 <ul>
-<li data-line="185" class="code-line">The following circuit is required for the microcontroller to function as a USB device</li>
-<li data-line="186" class="code-line"><code>Place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>XTAL</code></li>
-<li data-line="187" class="code-line">Connect a 22 pF capacitor to both ends of the <code>XTAL</code> with the other side going off to <code>GND</code></li>
-<li data-line="188" class="code-line">Connect one side of the <code>XTAL</code> to a net called <code>xtal1</code> and the other to a net called <code>xtal2</code></li>
-<li data-line="189" class="code-line">Connect the <code>xtal1</code> net to <code>XTAL1</code> (pin 16) and <code>xtal2</code> to <code>XTAL2</code> (pin 17) on the microcontroller
+<li data-line="148" class="code-line">The following circuit is required for the microcontroller to function as a USB device</li>
+<li data-line="149" class="code-line"><code>Place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>XTAL</code></li>
+<li data-line="150" class="code-line">Connect a 22 pF capacitor to both ends of the <code>XTAL</code> with the other side going off to <code>GND</code></li>
+<li data-line="151" class="code-line">Connect one side of the <code>XTAL</code> to a net called <code>xtal1</code> and the other to a net called <code>xtal2</code></li>
+<li data-line="152" class="code-line">Connect the <code>xtal1</code> net to <code>XTAL1</code> (pin 16) and <code>xtal2</code> to <code>XTAL2</code> (pin 17) on the microcontroller
 <img src="./images/xtal_circuit.PNG" alt="Crystal Circuit" class="loading" id="image-hash-2064364217"></li>
 </ul>
 </li>
-<li data-line="192" class="code-line">
-<p data-line="192" class="code-line">Placing the keys</p>
+<li data-line="155" class="code-line">
+<p data-line="155" class="code-line">Placing the keys</p>
 <ul>
-<li data-line="193" class="code-line">The following circuit is used for all the keys:
+<li data-line="156" class="code-line">The following circuit is used for all the keys:
 <img src="./images/key_circuit.PNG" alt="Key circuit" class="loading" id="image-hash--1909546313"></li>
-<li data-line="195" class="code-line"><code>Place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>KEYSW</code></li>
-<li data-line="196" class="code-line"><code>Place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>D</code></li>
-<li data-line="197" class="code-line">Connect the <code>2 pin</code> on the <code>KEYSW</code> on to the 2 pin on the diode <strong>Orientation on the diode is extremely important</strong></li>
-<li data-line="198" class="code-line">For an 47 key ortholinear keyboard, copy and paste this circuit 46 times in rows of 12 (besides the third row which should have 11 keys)</li>
-<li data-line="199" class="code-line">Connect all the pin 1's on the switch on the same row</li>
-<li data-line="200" class="code-line">Connect all the pin 1's on the diode to the next pin 2 on the switch in the columns
+<li data-line="158" class="code-line"><code>Place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>KEYSW</code></li>
+<li data-line="159" class="code-line"><code>Place symbol</code> &gt; <code>keyboard_parts</code> &gt; <code>D</code></li>
+<li data-line="160" class="code-line">Connect the <code>2 pin</code> on the <code>KEYSW</code> on to the 2 pin on the diode <strong>Orientation on the diode is extremely important</strong></li>
+<li data-line="161" class="code-line">For an 47 key ortholinear keyboard, copy and paste this circuit 46 times in rows of 12 (besides the third row which should have 11 keys)</li>
+<li data-line="162" class="code-line">Connect all the pin 1's on the switch on the same row</li>
+<li data-line="163" class="code-line">Connect all the pin 1's on the diode to the next pin 2 on the switch in the columns
 <img src="./images/keys.PNG" alt="Keys" class="loading" id="image-hash-935188572"></li>
-<li data-line="202" class="code-line">Connect the bottom row diodes together
+<li data-line="165" class="code-line">Connect the bottom row diodes together
 <img src="./images/row3.PNG" alt="Row 3" class="loading" id="image-hash-418697601"></li>
-<li data-line="204" class="code-line">Create a net on the each of the vertical wire segments in the top row named <code>col0</code> to <code>col11</code></li>
-<li data-line="205" class="code-line">Create a net on the the left most switch of each row labeled <code>row0</code> to <code>row3</code>
+<li data-line="167" class="code-line">Create a net on the each of the vertical wire segments in the top row named <code>col0</code> to <code>col11</code></li>
+<li data-line="168" class="code-line">Create a net on the the left most switch of each row labeled <code>row0</code> to <code>row3</code>
 <img src="./images/key_labels.PNG" alt="Key labels" class="loading" id="image-hash-1786279175">
 <img src="./images/key_label_zoom.PNG" alt="Key label zoom" class="loading" id="image-hash--1015548602"></li>
-<li data-line="208" class="code-line">Connect each of the row and col nets to a GPIO pin on the microcontroller (<code>PAX</code>, <code>PBX</code>, <code>PCX</code>, or <code>PDX</code>) these can be changed later to make it easier to route the PCB
+<li data-line="171" class="code-line">Connect each of the row and col nets to a GPIO pin on the microcontroller (<code>PAX</code>, <code>PBX</code>, <code>PCX</code>, or <code>PDX</code>) these can be changed later to make it easier to route the PCB
 <img src="./images/uc_kb_nets.PNG" alt="Microcontroller keyboard nets" class="loading" id="image-hash--879266859"></li>
 </ul>
 </li>
-<li data-line="210" class="code-line">
-<p data-line="210" class="code-line">Bypass Capacitors</p>
+<li data-line="173" class="code-line">
+<p data-line="173" class="code-line">Bypass Capacitors</p>
 <ul>
-<li data-line="211" class="code-line">Bypass capacitors are placed between all <code>VCC</code> nets and <code>GND</code>, watch this <a href="https://www.youtube.com/watch?v=BcJ6UdDx1vg" data-href="https://www.youtube.com/watch?v=BcJ6UdDx1vg">video to learn more</a></li>
-<li data-line="212" class="code-line">There are 6 connections that will use bypass capacitors</li>
-<li data-line="213" class="code-line">Create the following circuit using 0.1 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">μ</span></span></span></span></eq> capacitors
+<li data-line="174" class="code-line">Bypass capacitors are placed between all <code>VCC</code> nets and <code>GND</code>, watch this <a href="https://www.youtube.com/watch?v=BcJ6UdDx1vg" data-href="https://www.youtube.com/watch?v=BcJ6UdDx1vg">video to learn more</a></li>
+<li data-line="175" class="code-line">There are 6 connections that will use bypass capacitors</li>
+<li data-line="176" class="code-line">Create the following circuit using 0.1 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">μ</span></span></span></span></eq> capacitors
 <img src="./images/bypass.PNG" alt="Bypass capacitor circuit" class="loading" id="image-hash-1458527760"></li>
 </ul>
 </li>
-<li data-line="215" class="code-line">
-<p data-line="215" class="code-line">Mark all unconnected ports</p>
+<li data-line="178" class="code-line">
+<p data-line="178" class="code-line">Mark all unconnected ports</p>
 <ul>
-<li data-line="216" class="code-line">In the right menu, click <code>Place no connection flag</code></li>
-<li data-line="217" class="code-line">Place the symbol over all unused ports on the microcontroller and on <code>SBU1</code> and <code>SBU2</code> on the USB C receptacle
+<li data-line="179" class="code-line">In the right menu, click <code>Place no connection flag</code></li>
+<li data-line="180" class="code-line">Place the symbol over all unused ports on the microcontroller and on <code>SBU1</code> and <code>SBU2</code> on the USB C receptacle
 <img src="./images/unconnected_nets.PNG" alt="Unconnected nets" class="loading" id="image-hash-824257325"></li>
 </ul>
 </li>
-<li data-line="219" class="code-line">
-<p data-line="219" class="code-line">Annotate the schematic to give components names</p>
+<li data-line="182" class="code-line">
+<p data-line="182" class="code-line">Annotate the schematic to give components names</p>
 <ul>
-<li data-line="220" class="code-line"><code>Tools</code> &gt; <code>Annotate Schematic</code></li>
-<li data-line="221" class="code-line">Keep all default settings</li>
-<li data-line="222" class="code-line">Press <code>Annotate</code></li>
-<li data-line="223" class="code-line"><code>Close</code></li>
+<li data-line="183" class="code-line"><code>Tools</code> &gt; <code>Annotate Schematic</code></li>
+<li data-line="184" class="code-line">Keep all default settings</li>
+<li data-line="185" class="code-line">Press <code>Annotate</code></li>
+<li data-line="186" class="code-line"><code>Close</code></li>
 </ul>
 </li>
-<li data-line="224" class="code-line">
-<p data-line="224" class="code-line">Run a Design Rules Check to make sure there are no errors in the circuit</p>
+<li data-line="187" class="code-line">
+<p data-line="187" class="code-line">Run a Design Rules Check to make sure there are no errors in the circuit</p>
 <ul>
-<li data-line="225" class="code-line"><code>Perform electrical rules check</code> &gt; <code>Run</code></li>
-<li data-line="226" class="code-line">Fix any errors that occur, if there are only errors for your <code>VCC</code> or <code>GND</code> not being driven, you can move on
+<li data-line="188" class="code-line"><code>Perform electrical rules check</code> &gt; <code>Run</code></li>
+<li data-line="189" class="code-line">Fix any errors that occur, if there are only errors for your <code>VCC</code> or <code>GND</code> not being driven, you can move on
 <img src="./images/finished_circuit.PNG" alt="Finished Circuit" class="loading" id="image-hash-603594756"></li>
 </ul>
 </li>
 </ul>
-<h2 id="assigning-footprints-3" data-line="229" class="code-line">Assigning Footprints</h2>
+<h2 id="assigning-footprints-1" data-line="192" class="code-line">Assigning Footprints</h2>
 <ul>
-<li data-line="231" class="code-line">Assigning footprints tell the PCB software what size to make all of your components. Additionally you will buy components based off the size of their footprint. For most components we will use the <code>0805</code> surface mount package. If you do not feel comfortable surface mounting components, you will have to heavily modify the PCB layout.</li>
-<li data-line="232" class="code-line"><code>Tools</code> &gt; <code>Assign Footprints...</code>
+<li data-line="194" class="code-line">Assigning footprints tell the PCB software what size to make all of your components. Additionally you will buy components based off the size of their footprint. For most components we will use the <code>0805</code> surface mount package. If you do not feel comfortable surface mounting components, you will have to heavily modify the PCB layout.</li>
+<li data-line="195" class="code-line"><code>Tools</code> &gt; <code>Assign Footprints...</code>
 <table>
 <thead>
 <tr>
@@ -578,360 +441,223 @@ Revision 2 Green, Revision 1 White, Back top, Front bottom</p>
 <img src="./images/fp2.PNG" alt="Footprint 2" class="loading" id="image-hash-134943958">
 <img src="./images/fp3.PNG" alt="Footprint 3" class="loading" id="image-hash-135867479">
 <ul>
-<li data-line="247" class="code-line">Press <code>OK</code></li>
+<li data-line="210" class="code-line">Press <code>OK</code></li>
 </ul>
 </li>
 </ul>
-<h2 id="creating-the-pcb-3" data-line="249" class="code-line">Creating the PCB</h2>
-<h3 id="set-the-grid-size-3" data-line="251" class="code-line">Set the Grid Size</h3>
+<h2 id="creating-the-pcb-1" data-line="212" class="code-line">Creating the PCB</h2>
+<h3 id="set-the-grid-size-1" data-line="214" class="code-line">Set the Grid Size</h3>
 <ul>
-<li data-line="253" class="code-line">Click the <code>Grid</code> dropdown menu on the top</li>
-<li data-line="254" class="code-line"><code>Edit User Grid</code></li>
-<li data-line="255" class="code-line">Set <code>Size X</code> and <code>Size Y</code> to <code>0.254</code></li>
+<li data-line="216" class="code-line">Click the <code>Grid</code> dropdown menu on the top</li>
+<li data-line="217" class="code-line"><code>Edit User Grid</code></li>
+<li data-line="218" class="code-line">Set <code>Size X</code> and <code>Size Y</code> to <code>0.254</code></li>
 </ul>
-<p data-line="257" class="code-line"><img src="./images/grid_menu.PNG" alt="Grid Menu" class="loading" id="image-hash--2065300314">
+<p data-line="220" class="code-line"><img src="./images/grid_menu.PNG" alt="Grid Menu" class="loading" id="image-hash--2065300314">
 <img src="./images/grid_size.PNG" alt="Grid Size" class="loading" id="image-hash--614551992"></p>
-<h3 id="importing-from-the-schematic-3" data-line="261" class="code-line">Importing From the Schematic</h3>
+<h3 id="importing-from-the-schematic-1" data-line="224" class="code-line">Importing From the Schematic</h3>
 <ul>
-<li data-line="263" class="code-line">Close the schematic and open <code>PCB Layout Editor</code></li>
-<li data-line="264" class="code-line"><code>Tools</code> &gt; <code>Update PCB from Schematic</code></li>
-<li data-line="265" class="code-line">Click Anywhere to Place all the components</li>
-<li data-line="266" class="code-line">Click <code>Layers Manager</code> &gt; <code>Items</code> &gt; Uncheck the box next to <code>Ratsnest</code>
+<li data-line="226" class="code-line">Close the schematic and open <code>PCB Layout Editor</code></li>
+<li data-line="227" class="code-line"><code>Tools</code> &gt; <code>Update PCB from Schematic</code></li>
+<li data-line="228" class="code-line">Click Anywhere to Place all the components</li>
+<li data-line="229" class="code-line">Click <code>Layers Manager</code> &gt; <code>Items</code> &gt; Uncheck the box next to <code>Ratsnest</code>
 <ul>
-<li data-line="267" class="code-line">This will be helpful when routing the PCB, but it is not now</li>
+<li data-line="230" class="code-line">This will be helpful when routing the PCB, but it is not now</li>
 </ul>
 </li>
 </ul>
-<h3 id="organizing-your-components-3" data-line="269" class="code-line">Organizing your components</h3>
+<h3 id="organizing-your-components-1" data-line="232" class="code-line">Organizing your components</h3>
 <ul>
-<li data-line="271" class="code-line">Arrange the keys in the same order as your circuit</li>
-<li data-line="272" class="code-line">The easiest way I found to do this is to use <code>ctrl + f</code> to search for the key annotations</li>
-<li data-line="273" class="code-line">I like to leave one <em>grid snap</em> gap between each key, make sure all keys are evenly spaced on the grid</li>
-<li data-line="274" class="code-line">There should be a visible <code>+</code> sign between all groups for 4 adjacent keys</li>
+<li data-line="234" class="code-line">Arrange the keys in the same order as your circuit</li>
+<li data-line="235" class="code-line">The easiest way I found to do this is to use <code>ctrl + f</code> to search for the key annotations</li>
+<li data-line="236" class="code-line">I like to leave one <em>grid snap</em> gap between each key, make sure all keys are evenly spaced on the grid</li>
+<li data-line="237" class="code-line">There should be a visible <code>+</code> sign between all groups for 4 adjacent keys</li>
 </ul>
-<blockquote data-line="276" class="code-line">
-<p data-line="276" class="code-line">Follow the annotations from your schematic to put the keys in the correct order</p>
+<blockquote data-line="239" class="code-line">
+<p data-line="239" class="code-line">Follow the annotations from your schematic to put the keys in the correct order</p>
 </blockquote>
-<p data-line="278" class="code-line"><img src="./images/keys_placed.PNG" alt="Keys placed" class="loading" id="image-hash-2034033174">
+<p data-line="241" class="code-line"><img src="./images/keys_placed.PNG" alt="Keys placed" class="loading" id="image-hash-2034033174">
 <img src="./images/4keys.PNG" alt="Zoom in" class="loading" id="image-hash-1083032470"></p>
-<h3 id="place-the-other-parts-3" data-line="281" class="code-line">Place the Other Parts</h3>
+<h3 id="place-the-other-parts-1" data-line="244" class="code-line">Place the Other Parts</h3>
 <ul>
-<li data-line="283" class="code-line">Because this keyboard mostly uses surface mount components, they will mostly go on the back to hide them</li>
-<li data-line="284" class="code-line">To place a component on the back, click on the footprint and press <code>f</code>
+<li data-line="246" class="code-line">Because this keyboard mostly uses surface mount components, they will mostly go on the back to hide them</li>
+<li data-line="247" class="code-line">To place a component on the back, click on the footprint and press <code>f</code>
 <ul>
-<li data-line="285" class="code-line">The text for the label should be backwards and in purple</li>
+<li data-line="248" class="code-line">The text for the label should be backwards and in purple</li>
 </ul>
 </li>
-<li data-line="286" class="code-line">Flip all diodes to the back, and align them onto their key switch</li>
-<li data-line="287" class="code-line">Place the diode on the lower part of the key switch (opposite of the gold)</li>
+<li data-line="249" class="code-line">Flip all diodes to the back, and align them onto their key switch</li>
+<li data-line="250" class="code-line">Place the diode on the lower part of the key switch (opposite of the gold)</li>
 </ul>
-<p data-line="289" class="code-line"><img src="./images/diodes_placed.PNG" alt="Diodes placed" class="loading" id="image-hash--531054718"></p>
+<p data-line="252" class="code-line"><img src="./images/diodes_placed.PNG" alt="Diodes placed" class="loading" id="image-hash--531054718"></p>
 <ul>
-<li data-line="291" class="code-line">Turning on <code>ratsnest</code> may be helpful for this part</li>
-<li data-line="292" class="code-line">Arrange the other parts on the back above the key switches
+<li data-line="254" class="code-line">Turning on <code>ratsnest</code> may be helpful for this part</li>
+<li data-line="255" class="code-line">Arrange the other parts on the back above the key switches
 <ul>
-<li data-line="293" class="code-line">All the components in the schematic that are near the microcontroller should go near the microcontroller</li>
-<li data-line="294" class="code-line">5 bypass capacitors should go near the microcontroller with the other going near the USB-C receptacle</li>
+<li data-line="256" class="code-line">All the components in the schematic that are near the microcontroller should go near the microcontroller</li>
+<li data-line="257" class="code-line">5 bypass capacitors should go near the microcontroller with the other going near the USB-C receptacle</li>
 </ul>
 </li>
-<li data-line="295" class="code-line">The crystal should go on the back as close as possible to the microcontroller pins it connects to</li>
-<li data-line="296" class="code-line">The Type-C connector should go on the front, it will be the highest component on the PCB</li>
-<li data-line="297" class="code-line">The switch can go on the front or back based on preference, I put it on the front</li>
+<li data-line="258" class="code-line">The crystal should go on the back as close as possible to the microcontroller pins it connects to</li>
+<li data-line="259" class="code-line">The Type-C connector should go on the front, it will be the highest component on the PCB</li>
+<li data-line="260" class="code-line">The switch can go on the front or back based on preference, I put it on the front</li>
 </ul>
-<p data-line="299" class="code-line"><img src="./images/uc_components.PNG" alt="Microcontroller circuit" class="loading" id="image-hash--1395008939">
+<p data-line="262" class="code-line"><img src="./images/uc_components.PNG" alt="Microcontroller circuit" class="loading" id="image-hash--1395008939">
 <img src="./images/tc_components.PNG" alt="Type-C circuit" class="loading" id="image-hash-1546648660"></p>
-<h3 id="adjust-your-circuit-3" data-line="302" class="code-line">Adjust your circuit</h3>
+<h3 id="adjust-your-circuit-1" data-line="265" class="code-line">Adjust your circuit</h3>
 <ul>
-<li data-line="304" class="code-line">With the <code>ratsnest</code> turned on, move the location of rows and cols on your microcontroller to reduce the number of ratsnests that overlap</li>
-<li data-line="305" class="code-line">After making a change, <code>Tools</code> &gt; <code>Update PCB From Schematic</code></li>
+<li data-line="267" class="code-line">With the <code>ratsnest</code> turned on, move the location of rows and cols on your microcontroller to reduce the number of ratsnests that overlap</li>
+<li data-line="268" class="code-line">After making a change, <code>Tools</code> &gt; <code>Update PCB From Schematic</code></li>
 </ul>
-<h3 id="set-the-track-width-3" data-line="307" class="code-line">Set the Track Width</h3>
+<h3 id="set-the-track-width-1" data-line="270" class="code-line">Set the Track Width</h3>
 <ul>
-<li data-line="309" class="code-line">I use <a href="https://jlcpcb.com/" data-href="https://jlcpcb.com/">JLCPCB</a> to manufacture my PCBs, their minimum trace width is 5 mil (0.127 mm) with the same minimum spacing</li>
+<li data-line="272" class="code-line">I use <a href="https://jlcpcb.com/" data-href="https://jlcpcb.com/">JLCPCB</a> to manufacture my PCBs, their minimum trace width is 5 mil (0.127 mm) with the same minimum spacing</li>
 </ul>
-<p data-line="311" class="code-line"><img src="./images/spacing.PNG" alt="JLCPCB min spacing" class="loading" id="image-hash--589011599"></p>
+<p data-line="274" class="code-line"><img src="./images/spacing.PNG" alt="JLCPCB min spacing" class="loading" id="image-hash--589011599"></p>
 <ul>
-<li data-line="313" class="code-line">The default .254 mm width does not need to be changed, but you can go down to .2 mm to have smaller traces</li>
+<li data-line="276" class="code-line">The default .254 mm width does not need to be changed, but you can go down to .2 mm to have smaller traces</li>
 </ul>
-<h3 id="making-connections-3" data-line="315" class="code-line">Making connections</h3>
+<h3 id="making-connections-1" data-line="278" class="code-line">Making connections</h3>
 <ul>
-<li data-line="317" class="code-line">To make a connection, use the bar on the right to select a layer
+<li data-line="280" class="code-line">To make a connection, use the bar on the right to select a layer
 <ul>
-<li data-line="318" class="code-line"><code>F.CU</code> for components on the front</li>
-<li data-line="319" class="code-line"><code>B.CU</code> for components on the back</li>
-</ul>
-</li>
-<li data-line="320" class="code-line">You must select the layer of the starting component to make a connection</li>
-<li data-line="321" class="code-line">With the correct layer selected, press <code>Route tracks</code></li>
-<li data-line="322" class="code-line">Connect all components, but do not connect any <code>GND</code> nets, those will all be taken care of in the end</li>
-</ul>
-<p data-line="324" class="code-line"><img src="./images/clk_connection.PNG" alt="Clock connection" class="loading" id="image-hash-650210499"></p>
-<ul>
-<li data-line="326" class="code-line">To make connections easier, click on the footprint and press <code>R</code> to rotate the component if that makes it easier</li>
-<li data-line="327" class="code-line">I recommend breaking out all the pins of the microcontroller before worrying about connecting the microcontroller to components</li>
-<li data-line="328" class="code-line">If traces are going to overlap, press <code>v</code> to insert a <code>via</code> between the front and the back to switch layers</li>
-</ul>
-<p data-line="330" class="code-line"><img src="./images/uc_breakout.PNG" alt="Microcontroller breakout" class="loading" id="image-hash-1352596910"></p>
-<h3 id="create-the-remaining-connections-3" data-line="332" class="code-line">Create the Remaining Connections</h3>
-<p data-line="334" class="code-line"><img src="./images/pcbrows.PNG" alt="PCB Row Connections" class="loading" id="image-hash--1369720362"></p>
-<p data-line="336" class="code-line">Connect the diodes for all keys in the same row</p>
-<p data-line="338" class="code-line"><img src="./images/pcbcols.PNG" alt="PCB Col Connections" class="loading" id="image-hash--2056992272"></p>
-<p data-line="340" class="code-line">Connect the switches in the same column</p>
-<p data-line="342" class="code-line"><img src="./images/usbcpcb.PNG" alt="USB Receptacle Connections" class="loading" id="image-hash--686921794"></p>
-<p data-line="344" class="code-line">Break out connections from the USB-C receptacle</p>
-<h3 id="add-mounting-holes-3" data-line="346" class="code-line">Add Mounting Holes</h3>
-<ul>
-<li data-line="348" class="code-line">This desing suspends the PCB from standoffs, to use them, m3 screw holes are added to the PCB</li>
-<li data-line="349" class="code-line"><code>Place</code> &gt; <code>Footprint</code> &gt; <code>MountingHole_3.2mm_M3</code></li>
-<li data-line="350" class="code-line">I personally put 3 screw holes on each side and one in the middle
-<ul>
-<li data-line="351" class="code-line">Adding more holes can make the PCB flex less</li>
+<li data-line="281" class="code-line"><code>F.CU</code> for components on the front</li>
+<li data-line="282" class="code-line"><code>B.CU</code> for components on the back</li>
 </ul>
 </li>
+<li data-line="283" class="code-line">You must select the layer of the starting component to make a connection</li>
+<li data-line="284" class="code-line">With the correct layer selected, press <code>Route tracks</code></li>
+<li data-line="285" class="code-line">Connect all components, but do not connect any <code>GND</code> nets, those will all be taken care of in the end</li>
 </ul>
-<p data-line="353" class="code-line"><img src="./images/mountingholes.PNG" alt="Mounting Holes" class="loading" id="image-hash--146557032"></p>
-<h3 id="creating-an-outline-for-the-pcb-3" data-line="355" class="code-line">Creating an outline for the PCB</h3>
+<p data-line="287" class="code-line"><img src="./images/clk_connection.PNG" alt="Clock connection" class="loading" id="image-hash-650210499"></p>
 <ul>
-<li data-line="357" class="code-line">Select the <code>Edge.Cuts</code> layer</li>
-<li data-line="358" class="code-line">Select the <code>Add graphic lines</code> tool</li>
-<li data-line="359" class="code-line">Draw a <strong>fully connected</strong> rectangle around all your components</li>
-<li data-line="360" class="code-line">The USB-C connector should be on the outer limits of the PCB on the top, and the screw holes should be the limit on the sides</li>
-<li data-line="361" class="code-line">The smaller the PCB, the cheeper it will be to fabricate</li>
+<li data-line="289" class="code-line">To make connections easier, click on the footprint and press <code>R</code> to rotate the component if that makes it easier</li>
+<li data-line="290" class="code-line">I recommend breaking out all the pins of the microcontroller before worrying about connecting the microcontroller to components</li>
+<li data-line="291" class="code-line">If traces are going to overlap, press <code>v</code> to insert a <code>via</code> between the front and the back to switch layers</li>
 </ul>
-<p data-line="363" class="code-line"><img src="./images/edgecuts.PNG" alt="Edge Cuts" class="loading" id="image-hash-1483398294"></p>
+<p data-line="293" class="code-line"><img src="./images/uc_breakout.PNG" alt="Microcontroller breakout" class="loading" id="image-hash-1352596910"></p>
+<h3 id="create-the-remaining-connections-1" data-line="295" class="code-line">Create the Remaining Connections</h3>
+<p data-line="297" class="code-line"><img src="./images/pcbrows.PNG" alt="PCB Row Connections" class="loading" id="image-hash--1369720362"></p>
+<p data-line="299" class="code-line">Connect the diodes for all keys in the same row</p>
+<p data-line="301" class="code-line"><img src="./images/pcbcols.PNG" alt="PCB Col Connections" class="loading" id="image-hash--2056992272"></p>
+<p data-line="303" class="code-line">Connect the switches in the same column</p>
+<p data-line="305" class="code-line"><img src="./images/usbcpcb.PNG" alt="USB Receptacle Connections" class="loading" id="image-hash--686921794"></p>
+<p data-line="307" class="code-line">Break out connections from the USB-C receptacle</p>
+<h3 id="add-mounting-holes-1" data-line="309" class="code-line">Add Mounting Holes</h3>
 <ul>
-<li data-line="365" class="code-line">After creating the outline, try opening <code>View</code> &gt; <code>3D Viewer</code></li>
-<li data-line="366" class="code-line">If you see the folowing error, look for any missing connections in your edge cuts or extra lines</li>
-</ul>
-<p data-line="368" class="code-line"><img src="./images/edgecuterror.PNG" alt="Edge Cut Error" class="loading" id="image-hash--179808341"></p>
+<li data-line="311" class="code-line">This desing suspends the PCB from standoffs, to use them, m3 screw holes are added to the PCB</li>
+<li data-line="312" class="code-line"><code>Place</code> &gt; <code>Footprint</code> &gt; <code>MountingHole_3.2mm_M3</code></li>
+<li data-line="313" class="code-line">I personally put 3 screw holes on each side and one in the middle
 <ul>
-<li data-line="370" class="code-line">Once you fix all the errors, you should be able to view a 3D rendering of the PCB</li>
+<li data-line="314" class="code-line">Adding more holes can make the PCB flex less</li>
 </ul>
-<p data-line="372" class="code-line"><img src="./images/3dview.PNG" alt="3D View" class="loading" id="image-hash-1386474206"></p>
-<h3 id="adding-a-ground-plane-3" data-line="374" class="code-line">Adding a Ground Plane</h3>
+</li>
+</ul>
+<p data-line="316" class="code-line"><img src="./images/mountingholes.PNG" alt="Mounting Holes" class="loading" id="image-hash--146557032"></p>
+<h3 id="creating-an-outline-for-the-pcb-1" data-line="318" class="code-line">Creating an outline for the PCB</h3>
 <ul>
-<li data-line="376" class="code-line">In the previous steps, no connections were made to ground, we will resolve them all now</li>
-<li data-line="377" class="code-line">On the right side, select the <code>Add filled zones</code> tool on the back side and the <code>GND</code> net</li>
+<li data-line="320" class="code-line">Select the <code>Edge.Cuts</code> layer</li>
+<li data-line="321" class="code-line">Select the <code>Add graphic lines</code> tool</li>
+<li data-line="322" class="code-line">Draw a <strong>fully connected</strong> rectangle around all your components</li>
+<li data-line="323" class="code-line">The USB-C connector should be on the outer limits of the PCB on the top, and the screw holes should be the limit on the sides</li>
+<li data-line="324" class="code-line">The smaller the PCB, the cheeper it will be to fabricate</li>
 </ul>
-<p data-line="379" class="code-line"><img src="./images/filled_zone_settings.PNG" alt="Filled zone settings" class="loading" id="image-hash--1679172319"></p>
+<p data-line="326" class="code-line"><img src="./images/edgecuts.PNG" alt="Edge Cuts" class="loading" id="image-hash-1483398294"></p>
 <ul>
-<li data-line="381" class="code-line">Select the top left corner &gt; top right corner &gt; bottom right corner &gt; <strong>double click on the lower left corner</strong></li>
-<li data-line="382" class="code-line">You should see:</li>
+<li data-line="328" class="code-line">After creating the outline, try opening <code>View</code> &gt; <code>3D Viewer</code></li>
+<li data-line="329" class="code-line">If you see the folowing error, look for any missing connections in your edge cuts or extra lines</li>
 </ul>
-<p data-line="384" class="code-line"><img src="./images/bottom_fill.PNG" alt="Bottom filled zone" class="loading" id="image-hash--1116361531"></p>
+<p data-line="331" class="code-line"><img src="./images/edgecuterror.PNG" alt="Edge Cut Error" class="loading" id="image-hash--179808341"></p>
 <ul>
-<li data-line="386" class="code-line">By zooming in, you can see connections made to ground nets</li>
+<li data-line="333" class="code-line">Once you fix all the errors, you should be able to view a 3D rendering of the PCB</li>
 </ul>
-<p data-line="388" class="code-line"><img src="./images/bottom_zone_zoom.PNG" alt="Bottom filled zone zoom in" class="loading" id="image-hash-161378138"></p>
+<p data-line="335" class="code-line"><img src="./images/3dview.PNG" alt="3D View" class="loading" id="image-hash-1386474206"></p>
+<h3 id="adding-a-ground-plane-1" data-line="337" class="code-line">Adding a Ground Plane</h3>
 <ul>
-<li data-line="390" class="code-line">Repeat the process on the top side</li>
+<li data-line="339" class="code-line">In the previous steps, no connections were made to ground, we will resolve them all now</li>
+<li data-line="340" class="code-line">On the right side, select the <code>Add filled zones</code> tool on the back side and the <code>GND</code> net</li>
 </ul>
-<p data-line="392" class="code-line"><img src="./images/top_zone.PNG" alt="Top zone" class="loading" id="image-hash-1534387006"></p>
-<blockquote data-line="394" class="code-line">
-<p data-line="394" class="code-line">Press the <code>Do not show filled zones</code> button on the left side to hide the filled zones</p>
+<p data-line="342" class="code-line"><img src="./images/filled_zone_settings.PNG" alt="Filled zone settings" class="loading" id="image-hash--1679172319"></p>
+<ul>
+<li data-line="344" class="code-line">Select the top left corner &gt; top right corner &gt; bottom right corner &gt; <strong>double click on the lower left corner</strong></li>
+<li data-line="345" class="code-line">You should see:</li>
+</ul>
+<p data-line="347" class="code-line"><img src="./images/bottom_fill.PNG" alt="Bottom filled zone" class="loading" id="image-hash--1116361531"></p>
+<ul>
+<li data-line="349" class="code-line">By zooming in, you can see connections made to ground nets</li>
+</ul>
+<p data-line="351" class="code-line"><img src="./images/bottom_zone_zoom.PNG" alt="Bottom filled zone zoom in" class="loading" id="image-hash-161378138"></p>
+<ul>
+<li data-line="353" class="code-line">Repeat the process on the top side</li>
+</ul>
+<p data-line="355" class="code-line"><img src="./images/top_zone.PNG" alt="Top zone" class="loading" id="image-hash-1534387006"></p>
+<blockquote data-line="357" class="code-line">
+<p data-line="357" class="code-line">Press the <code>Do not show filled zones</code> button on the left side to hide the filled zones</p>
 </blockquote>
-<h3 id="run-the-design-rules-check-3" data-line="396" class="code-line">Run the Design Rules Check</h3>
+<h3 id="run-the-design-rules-check-1" data-line="359" class="code-line">Run the Design Rules Check</h3>
 <ul>
-<li data-line="398" class="code-line">Press <code>Perform Design Rules Check</code> on the top bar</li>
-<li data-line="399" class="code-line">Select the <code>Refill all zones before running DRC</code> &gt; <code>Run DRC</code></li>
-<li data-line="400" class="code-line">Resolve any errors that show up</li>
-<li data-line="401" class="code-line">The most common errors are:
+<li data-line="361" class="code-line">Press <code>Perform Design Rules Check</code> on the top bar</li>
+<li data-line="362" class="code-line">Select the <code>Refill all zones before running DRC</code> &gt; <code>Run DRC</code></li>
+<li data-line="363" class="code-line">Resolve any errors that show up</li>
+<li data-line="364" class="code-line">The most common errors are:
 <ul>
-<li data-line="402" class="code-line">Missing connections to ground:
+<li data-line="365" class="code-line">Missing connections to ground:
 <ul>
-<li data-line="403" class="code-line">It is possible that your filled zones cannot get around a trace or component, you may need to add some manual ground connections</li>
+<li data-line="366" class="code-line">It is possible that your filled zones cannot get around a trace or component, you may need to add some manual ground connections</li>
 </ul>
 </li>
-<li data-line="404" class="code-line">Traces too close:
+<li data-line="367" class="code-line">Traces too close:
 <ul>
-<li data-line="405" class="code-line">Re-route the traces to increase the distance between the traces</li>
+<li data-line="368" class="code-line">Re-route the traces to increase the distance between the traces</li>
 </ul>
 </li>
-<li data-line="406" class="code-line">Traces too close to holes in PCB
+<li data-line="369" class="code-line">Traces too close to holes in PCB
 <ul>
-<li data-line="407" class="code-line">Move the trace</li>
-</ul>
-</li>
-</ul>
-</li>
-<li data-line="408" class="code-line">When there are no design rule check violations, the PCB is complete</li>
-</ul>
-<p data-line="410" class="code-line"><img src="./images/drc.PNG" alt="Design rules check" class="loading" id="image-hash--1537552573"></p>
-<h2 id="submitting-pcb-for-fabrication-3" data-line="413" class="code-line">Submitting PCB for Fabrication</h2>
-<h3 id="generate-gerber-files-3" data-line="415" class="code-line">Generate Gerber Files</h3>
-<ul>
-<li data-line="417" class="code-line"><a href="https://support.jlcpcb.com/article/44-how-to-export-kicad-pcb-to-gerber-files" data-href="https://support.jlcpcb.com/article/44-how-to-export-kicad-pcb-to-gerber-files">Refer to this page from JLCPCB for instructions</a></li>
-<li data-line="418" class="code-line"><code>File</code> &gt; <code>Plot</code></li>
-<li data-line="419" class="code-line">Select a folder for <code>Output Directory</code></li>
-<li data-line="420" class="code-line">On the front page, leave all the default settings and press <code>Plot</code></li>
-<li data-line="421" class="code-line">Press <code>Generate Drill Files...</code>
-<ul>
-<li data-line="422" class="code-line">Click the <code>Gerber</code> option on the left</li>
-<li data-line="423" class="code-line">Press <code>Generate Drill File</code></li>
+<li data-line="370" class="code-line">Move the trace</li>
 </ul>
 </li>
 </ul>
-<p data-line="425" class="code-line"><img src="./images/plot.PNG" alt="Plot" class="loading" id="image-hash--1603471159">
+</li>
+<li data-line="371" class="code-line">When there are no design rule check violations, the PCB is complete</li>
+</ul>
+<p data-line="373" class="code-line"><img src="./images/drc.PNG" alt="Design rules check" class="loading" id="image-hash--1537552573"></p>
+<h2 id="submitting-pcb-for-fabrication-1" data-line="376" class="code-line">Submitting PCB for Fabrication</h2>
+<h3 id="generate-gerber-files-1" data-line="378" class="code-line">Generate Gerber Files</h3>
+<ul>
+<li data-line="380" class="code-line"><a href="https://support.jlcpcb.com/article/44-how-to-export-kicad-pcb-to-gerber-files" data-href="https://support.jlcpcb.com/article/44-how-to-export-kicad-pcb-to-gerber-files">Refer to this page from JLCPCB for instructions</a></li>
+<li data-line="381" class="code-line"><code>File</code> &gt; <code>Plot</code></li>
+<li data-line="382" class="code-line">Select a folder for <code>Output Directory</code></li>
+<li data-line="383" class="code-line">On the front page, leave all the default settings and press <code>Plot</code></li>
+<li data-line="384" class="code-line">Press <code>Generate Drill Files...</code>
+<ul>
+<li data-line="385" class="code-line">Click the <code>Gerber</code> option on the left</li>
+<li data-line="386" class="code-line">Press <code>Generate Drill File</code></li>
+</ul>
+</li>
+</ul>
+<p data-line="388" class="code-line"><img src="./images/plot.PNG" alt="Plot" class="loading" id="image-hash--1603471159">
 <img src="./images/drill.PNG" alt="Drill" class="loading" id="image-hash--1584261559"></p>
-<h3 id="submitting-to-jlcpcb-3" data-line="429" class="code-line">Submitting to JLCPCB</h3>
-<p data-line="430" class="code-line">(Instructions will also be shown for <a href="https://oshpark.com/" data-href="https://oshpark.com/">OSHPARK</a>, but they are much more expensive for large PCBs)</p>
+<h3 id="submitting-to-jlcpcb-1" data-line="392" class="code-line">Submitting to JLCPCB</h3>
+<p data-line="393" class="code-line">(Instructions will also be shown for <a href="https://oshpark.com/" data-href="https://oshpark.com/">OSHPARK</a>, but they are much more expensive for large PCBs)</p>
 <ul>
-<li data-line="432" class="code-line">Create a <code>.zip</code> from the output folder</li>
-<li data-line="433" class="code-line">Go to <a href="www.jlcpcb.com" data-href="www.jlcpcb.com">JLCPCB</a></li>
-<li data-line="434" class="code-line">Press <code>QUOTE NOW</code></li>
-<li data-line="435" class="code-line"><code>Add your gerber file</code> &gt; Select your <code>.zip</code></li>
-<li data-line="436" class="code-line">You can leave all the default options unless you want a different color</li>
-<li data-line="437" class="code-line">Proceeded with checkout, they will verify your that your design complies with their manufacturing process and has all the needed files</li>
-<li data-line="438" class="code-line">$10.40 + 16 for Fedex Shipping</li>
-<li data-line="439" class="code-line">Total time to receive your PCB should be less than two weeks (unless shipping by boat)</li>
+<li data-line="395" class="code-line">Create a <code>.zip</code> from the output folder</li>
+<li data-line="396" class="code-line">Go to <a href="www.jlcpcb.com" data-href="www.jlcpcb.com">JLCPCB</a></li>
+<li data-line="397" class="code-line">Press <code>QUOTE NOW</code></li>
+<li data-line="398" class="code-line"><code>Add your gerber file</code> &gt; Select your <code>.zip</code></li>
+<li data-line="399" class="code-line">You can leave all the default options unless you want a different color</li>
+<li data-line="400" class="code-line">Proceeded with checkout, they will verify your that your design complies with their manufacturing process and has all the needed files</li>
+<li data-line="401" class="code-line">$10.40 + 16 for Fedex Shipping</li>
+<li data-line="402" class="code-line">Total time to receive your PCB should be less than two weeks (unless shipping by boat)</li>
 </ul>
-<p data-line="441" class="code-line"><img src="./images/jlc_options.PNG" alt="JLCPCB gerber upload" class="loading" id="image-hash--306163474"></p>
-<p data-line="443" class="code-line"><img src="./images/jlcpcb_quote.PNG" alt="JLCPCB Quote" class="loading" id="image-hash-1629398707"></p>
-<h3 id="oshpark-3" data-line="445" class="code-line">OSHPARK</h3>
+<p data-line="404" class="code-line"><img src="./images/jlc_options.PNG" alt="JLCPCB gerber upload" class="loading" id="image-hash--306163474"></p>
+<p data-line="406" class="code-line"><img src="./images/jlcpcb_quote.PNG" alt="JLCPCB Quote" class="loading" id="image-hash-1629398707"></p>
+<h3 id="oshpark-1" data-line="408" class="code-line">OSHPARK</h3>
 <ul>
-<li data-line="447" class="code-line">PCBs from OSHPARK are more expensive, but higher quality. For large runs, it may make sense to use OSHPARK (you also have to be fine with a purple PCB)</li>
-<li data-line="448" class="code-line">Go to <a href="www.oshpark.com" data-href="www.oshpark.com">wwww.oshpark.com</a></li>
-<li data-line="449" class="code-line">Upload your <code>.zip</code></li>
-<li data-line="450" class="code-line">I saw that their quote was 5 times as much for 2 fiewer PCBs and did not continue...</li>
+<li data-line="410" class="code-line">PCBs from OSHPARK are more expensive, but higher quality. For large runs, it may make sense to use OSHPARK (you also have to be fine with a purple PCB)</li>
+<li data-line="411" class="code-line">Go to <a href="www.oshpark.com" data-href="www.oshpark.com">wwww.oshpark.com</a></li>
+<li data-line="412" class="code-line">Upload your <code>.zip</code></li>
+<li data-line="413" class="code-line">I saw that their quote was 5 times as much for 2 fiewer PCBs and did not continue...</li>
 </ul>
-<p data-line="453" class="code-line"><img src="./images/osh_quote.PNG" alt="OSHPARK Quote" class="loading" id="image-hash-1821316847"></p>
-<h1 id="ordering-components-from-digikey-3" data-line="456" class="code-line">Ordering Components from Digikey</h1>
-<ul>
-<li data-line="458" class="code-line">For this tutorial, the following components are purchased from <a href="www.digikey.com" data-href="www.digikey.com">Digikey</a></li>
-<li data-line="459" class="code-line">Note the quantities needed per the schematic and <strong>BUY MORE THAN YOU NEED</strong>, <strong>A LOT MORE</strong> (I generally buy 5-10 times as many of each component, it is often cheaper to buy at higher quantities)</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Item #</th>
-<th>Item</th>
-<th>Price</th>
-<th>Digikey Link</th>
-<th>Data Sheet</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>USB C Connector</td>
-<td>$1.37</td>
-<td><a href="https://www.digikey.com/product-detail/en/gct/USB4085-GF-A/2073-USB4085-GF-ACT-ND/9859733" data-href="https://www.digikey.com/product-detail/en/gct/USB4085-GF-A/2073-USB4085-GF-ACT-ND/9859733">Link</a></td>
-<td><a href="https://media.digikey.com/pdf/Data%20Sheets/GCT%20PDFs/Ionex_USB_Conn_Br.pdf" data-href="https://media.digikey.com/pdf/Data%20Sheets/GCT%20PDFs/Ionex_USB_Conn_Br.pdf">Link</a></td>
-</tr>
-<tr>
-<td>2</td>
-<td>Capacitor (22pF)</td>
-<td>$0.043</td>
-<td><a href="https://www.digikey.com/product-detail/en/w%C3%BCrth-elektronik/885012007012/732-7816-1-ND/5454443" data-href="https://www.digikey.com/product-detail/en/w%C3%BCrth-elektronik/885012007012/732-7816-1-ND/5454443">Link</a></td>
-<td><a href="https://www.we-online.de/katalog/datasheet/885012007012.pdf" data-href="https://www.we-online.de/katalog/datasheet/885012007012.pdf">Link</a></td>
-</tr>
-<tr>
-<td>3</td>
-<td>Capacitor (0.1 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">μ</span></span></span></span></eq>F)</td>
-<td>$0.0216</td>
-<td><a href="https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21B104KACNNNC/1276-1099-1-ND/3889185" data-href="https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21B104KACNNNC/1276-1099-1-ND/3889185">Link</a></td>
-<td><a href="https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B104KACNNNC_Spec.pdf" data-href="https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B104KACNNNC_Spec.pdf">Link</a></td>
-</tr>
-<tr>
-<td>4</td>
-<td>Capacitor (1 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">μ</span></span></span></span></eq>F)</td>
-<td>$0.055</td>
-<td><a href="https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21B105KOFNNNE/1276-1026-1-ND/3889112" data-href="https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21B105KOFNNNE/1276-1026-1-ND/3889112">Link</a></td>
-<td><a href="https://www.datasheets360.com/pdf/5320303544541785574" data-href="https://www.datasheets360.com/pdf/5320303544541785574">Link</a></td>
-</tr>
-<tr>
-<td>5</td>
-<td>Diode</td>
-<td>$.02446</td>
-<td><a href="https://www.digikey.com/product-detail/en/nexperia-usa-inc/BAS16GWJ/1727-7320-1-ND/7390571" data-href="https://www.digikey.com/product-detail/en/nexperia-usa-inc/BAS16GWJ/1727-7320-1-ND/7390571">Link</a></td>
-<td><a href="https://assets.nexperia.com/documents/data-sheet/BAS16GW.pdf" data-href="https://assets.nexperia.com/documents/data-sheet/BAS16GW.pdf">Link</a></td>
-</tr>
-<tr>
-<td>6</td>
-<td>Resistor (10 k<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq>)</td>
-<td>$0.0071</td>
-<td><a href="https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT10K0/RMCF0805JT10K0CT-ND/1942577" data-href="https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT10K0/RMCF0805JT10K0CT-ND/1942577">Link</a></td>
-<td><a href="https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf" data-href="https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf">Link</a></td>
-</tr>
-<tr>
-<td>7</td>
-<td>Resistor (22 <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq>)</td>
-<td>$0.0071</td>
-<td><a href="https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT22R0/RMCF0805JT22R0CT-ND/1942533" data-href="https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT22R0/RMCF0805JT22R0CT-ND/1942533">Link</a></td>
-<td><a href="https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf" data-href="https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf">Link</a></td>
-</tr>
-<tr>
-<td>8</td>
-<td>Resistor (5.1 k<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span></eq>)</td>
-<td>$0.0071</td>
-<td><a href="https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT5K10/RMCF0805JT5K10CT-ND/1942571" data-href="https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT5K10/RMCF0805JT5K10CT-ND/1942571">Link</a></td>
-<td><a href="https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf" data-href="https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf">Link</a></td>
-</tr>
-<tr>
-<td>9</td>
-<td>Switch</td>
-<td>$0.59</td>
-<td><a href="https://www.digikey.com/product-detail/en/e-switch/TL3342F160QG-TR/EG2531CT-ND/379004" data-href="https://www.digikey.com/product-detail/en/e-switch/TL3342F160QG-TR/EG2531CT-ND/379004">Link</a></td>
-<td><a href="https://sten-eswitch-13110800-production.s3.amazonaws.com/system/asset/product_line/data_sheet/165/TL3342.pdf" data-href="https://sten-eswitch-13110800-production.s3.amazonaws.com/system/asset/product_line/data_sheet/165/TL3342.pdf">Link</a></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li data-line="474" class="code-line">
-<p data-line="474" class="code-line">To search on your own for components (resistor example):</p>
-<ul>
-<li data-line="475" class="code-line">Go to <a href="https://www.digikey.com/" data-href="https://www.digikey.com/">Digikey</a></li>
-<li data-line="476" class="code-line"><code>Products</code> &gt; <code>Passives</code> &gt; <code>Resistors</code> &gt; <code>Chip Resistor - Surface Mount</code></li>
-<li data-line="477" class="code-line">Use the filters to get the correct value resistor</li>
-<li data-line="478" class="code-line">Set the <code>View Prices At</code> value to 10
-<ul>
-<li data-line="479" class="code-line">For most components, I ended up in the 10-100 piece price bracket</li>
-<li data-line="480" class="code-line">This will exclude any components that can only be purchased in high quantities</li>
-<li data-line="481" class="code-line">Click <code>More Filters</code></li>
-<li data-line="482" class="code-line"><code>Package</code> &gt; <code>0805</code> (based on the assigned footprint)</li>
-<li data-line="483" class="code-line"><code>Apply All</code></li>
-<li data-line="484" class="code-line">I also recommend deselecting <code>Include</code> under <code>Marketplace Product</code></li>
-</ul>
-</li>
-<li data-line="485" class="code-line"><code>Applied Filters</code> should show <code>Package/Case</code> and <code>Resistance</code></li>
-</ul>
-<p data-line="487" class="code-line"><img src="./images/applied_filters.PNG" alt="Applied Filters" class="loading" id="image-hash--792395417"></p>
-<ul>
-<li data-line="488" class="code-line">In the table, click the <code>Search Ascending</code> arrow under <code>Price</code> to show the lowest cost components
-<ul>
-<li data-line="489" class="code-line">For this keyboard, there really aren't any components where using a more expensive part is worth getting</li>
-</ul>
-</li>
-</ul>
-<p data-line="491" class="code-line"><img src="./images/resistor.PNG" alt="Resistor" class="loading" id="image-hash-1450065589"></p>
-</li>
-<li data-line="492" class="code-line">
-<p data-line="492" class="code-line">Repeat this process for all the other components, or use the products I listed in the table</p>
-</li>
-</ul>
-<h2 id="components-from-other-sources-3" data-line="495" class="code-line">Components From Other Sources</h2>
-<ul>
-<li data-line="497" class="code-line">I already owned the crystal oscillators, which is why I use through hole for them
-<ul>
-<li data-line="498" class="code-line"><a href="https://smile.amazon.com/a14073000ux0239-Profile-Crystal-Oscillator-Replacements/dp/B00SWK2HCO" data-href="https://smile.amazon.com/a14073000ux0239-Profile-Crystal-Oscillator-Replacements/dp/B00SWK2HCO">Amazon - uxcell 16.00 MHz crystal oscillator</a></li>
-</ul>
-</li>
-<li data-line="499" class="code-line"><a href="https://smile.amazon.com/Csdtylh-Male-Female-Standoff-Stainless-Assortment/dp/B06Y5TJXY1" data-href="https://smile.amazon.com/Csdtylh-Male-Female-Standoff-Stainless-Assortment/dp/B06Y5TJXY1">Amazon - Brass M3 Screw and Standoff Kit</a></li>
-</ul>
-<h3 id="keyswitches-3" data-line="501" class="code-line">Keyswitches</h3>
-<ul>
-<li data-line="503" class="code-line">I recommend ordering keyswitches from <a href="https://mechanicalkeyboards.com/shop/index.php?l=product_list&amp;c=107" data-href="https://mechanicalkeyboards.com/shop/index.php?l=product_list&amp;c=107">Mechanicalkeyboards.com</a></li>
-<li data-line="504" class="code-line"><strong>MAKE SURE THE SWITCHES YOU CHOOSE SAY PCB MOUNT</strong>
-<ul>
-<li data-line="505" class="code-line">I used my favorite switch, Kalih Speed Copper, which is plate mount</li>
-<li data-line="506" class="code-line">PCB mounted switches have two additional feet to help alignment</li>
-<li data-line="507" class="code-line">Plate mounted switches are very hard to align</li>
-<li data-line="508" class="code-line">Do not buy plate mounted switches</li>
-</ul>
-</li>
-</ul>
-<p data-line="511" class="code-line"><img src="./images/plate_mount.PNG" alt="Plate Mount" class="loading" id="image-hash-1652380382"></p>
-<p data-line="513" class="code-line"><img src="./images/pcb_mount.PNG" alt="PCB Mount" class="loading" id="image-hash--700547561"></p>
-<p data-line="515" class="code-line"><strong>WIP</strong></p>
+<p data-line="416" class="code-line"><img src="./images/osh_quote.PNG" alt="OSHPARK Quote" class="loading" id="image-hash-1821316847"></p>
+<p data-line="420" class="code-line"><strong>WIP</strong></p>
 
 </body></html>
