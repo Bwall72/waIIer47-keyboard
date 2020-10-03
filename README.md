@@ -1,11 +1,48 @@
 # WaIIer47 Mechanical Keyboard
 Custom design 47 key ortholinear keyboard with PCB, and Atmega32u4 Microcontroller
 
+## Images
+
 ![Both Keyboards](./images/both.png)
 Revision 2 Green, Revision 1 White, Back top, Front bottom
 
 ![Revision 2](./images/rev2.jpg)
 ![Revision 1](./images/rev1.jpg)
+
+# Bill Of Materials
+
+* See [BOM.md](./BOM.md)
+* The total cost for a Rev 2 PCB keybarod is:
+
+| Component | Unit Price | Units | Total |
+| --------- | ---------- | ----- | ----- |
+| Capacitor 22 pF | \$0.043  | 2 | \$0.086  |
+| Capacitor 0.1 $\mu$F | \$0.0216  | 5 | \$0.108  |
+| Capacitor 1.0 $\mu$F | \$0.055 | 1 | \$0.055 |
+| Diode | \$.02446 | 47 | \$1.223 |
+| LED | \$0.159 | 1 | \$0.159 |
+| USB-C Receptacle | \$1.37 | 1 | \$1.37 |
+| Kalih Speed Copper Key Switch | \$0.538 | 47 | \$25.286 |
+| Resistor 10 k$\Omega$ | \$0.0071 | 2 | \$0.0142 |
+| Resistor 22 $\Omega$ | \$0.0071 | 2 | \$0.0142 |
+| Resistor 5.1 k$\Omega$ | \$0.0071 | 2 | \$0.0142 |
+| Resistor 220 $\Omega$ | \$0.0071 | 1 | \$0.0071 |
+| Push Button Switch | \$0.59 | 1 | \$0.59 |
+| Atmega32U4 | \$4.08 | 1 | \$4.08 |
+| Crystal Oscillator | \$0.36 | 1 | \$0.36 |
+| PCB | \$2.08 | 2 | \$2.08 |
+| M3 Screws | \$0.033 | 7 | \$0.233
+| M3 Standoff | \$0.033 | 7 | \$0.233
+| Total ||| \$35.89
+
+>
+  Notes
+
+  * Shipping costs are excluded from the BOM
+  * Currently, I am reusing keycaps, so those are not included in the BOM
+    * I am part of the group buy for [KAT Mizu Keycaps](https://old.reddit.com/r/mechmarket/comments/i6aaga/ic_kat_mizu_coming_september_1st/), which would add \$64.44 to the total
+  * Kailh Speed Copper are my favorite switches, but they cannot be recomended for this keyboard. They are missing the pins to be used in a plateless keyboard like this one.
+
 # PCB Tutorial
 Designing a custom mechanical keyboard PCB using KiCad. The following was based on [Ruiqi Mao's Tutorial](https://github.com/ruiqimao/keyboard-pcb-guide)
 
@@ -417,5 +454,63 @@ Break out connections from the USB-C receptacle
 ![OSHPARK Quote](./images/osh_quote.PNG)
 
 
+# Ordering Components from Digikey
+
+* For this tutorial, the following components are purchased from [Digikey](www.digikey.com)
+* Note the quantities needed per the schematic and **BUY MORE THAN YOU NEED**, **A LOT MORE** (I generally buy 5-10 times as many of each component, it is often cheaper to buy at higher quantities)
+
+
+| Item # | Item | Price | Digikey Link | Data Sheet |
+| ------ | ---- | ------| --------| ---------- |
+1 | USB C Connector | \$1.37 | [Link](https://www.digikey.com/product-detail/en/gct/USB4085-GF-A/2073-USB4085-GF-ACT-ND/9859733) | [Link](https://media.digikey.com/pdf/Data%20Sheets/GCT%20PDFs/Ionex_USB_Conn_Br.pdf)
+2 | Capacitor (22pF) | \$0.043 | [Link](https://www.digikey.com/product-detail/en/w%C3%BCrth-elektronik/885012007012/732-7816-1-ND/5454443) | [Link](https://www.we-online.de/katalog/datasheet/885012007012.pdf)
+3 | Capacitor (0.1 $\mu$F) | \$0.0216 | [Link](https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21B104KACNNNC/1276-1099-1-ND/3889185) | [Link](https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B104KACNNNC_Spec.pdf)
+4 | Capacitor (1 $\mu$F) | \$0.055 | [Link](https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL21B105KOFNNNE/1276-1026-1-ND/3889112) | [Link](https://www.datasheets360.com/pdf/5320303544541785574)
+5 | Diode | \$.02446 | [Link](https://www.digikey.com/product-detail/en/nexperia-usa-inc/BAS16GWJ/1727-7320-1-ND/7390571) | [Link](https://assets.nexperia.com/documents/data-sheet/BAS16GW.pdf)
+6 | Resistor (10 k$\Omega$) | $0.0071 | [Link](https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT10K0/RMCF0805JT10K0CT-ND/1942577) | [Link](https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf)
+7 | Resistor (22 $\Omega$) | $0.0071 | [Link](https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT22R0/RMCF0805JT22R0CT-ND/1942533) | [Link](https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf)
+8 | Resistor (5.1 k$\Omega$) | $0.0071 | [Link](https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RMCF0805JT5K10/RMCF0805JT5K10CT-ND/1942571) | [Link](https://www.seielect.com/catalog/sei-rmcf_rmcp.pdf)
+9 | Switch | $0.59 | [Link](https://www.digikey.com/product-detail/en/e-switch/TL3342F160QG-TR/EG2531CT-ND/379004) | [Link](https://sten-eswitch-13110800-production.s3.amazonaws.com/system/asset/product_line/data_sheet/165/TL3342.pdf)
+
+* To search on your own for components (resistor example):
+  * Go to [Digikey](https://www.digikey.com/)
+  * `Products` > `Passives` > `Resistors` > `Chip Resistor - Surface Mount`
+  * Use the filters to get the correct value resistor
+  * Set the `View Prices At` value to 10
+    * For most components, I ended up in the 10-100 piece price bracket
+    * This will exclude any components that can only be purchased in high quantities
+    * Click `More Filters`
+    * `Package` > `0805` (based on the assigned footprint)
+    * `Apply All`
+    * I also recommend deselecting `Include` under `Marketplace Product`
+  * `Applied Filters` should show `Package/Case` and `Resistance`
+
+  ![Applied Filters](./images/applied_filters.PNG)
+  * In the table, click the `Search Ascending` arrow under `Price` to show the lowest cost components
+    * For this keyboard, there really aren't any components where using a more expensive part is worth getting
+
+  ![Resistor](./images/resistor.PNG)
+* Repeat this process for all the other components, or use the products I listed in the table
+
+
+## Components From Other Sources
+
+* I already owned the crystal oscillators, which is why I use through hole for them
+  * [Amazon - uxcell 16.00 MHz crystal oscillator](https://smile.amazon.com/a14073000ux0239-Profile-Crystal-Oscillator-Replacements/dp/B00SWK2HCO)
+* [Amazon - Brass M3 Screw and Standoff Kit](https://smile.amazon.com/Csdtylh-Male-Female-Standoff-Stainless-Assortment/dp/B06Y5TJXY1)
+
+### Keyswitches
+
+* I recommend ordering keyswitches from [Mechanicalkeyboards.com](https://mechanicalkeyboards.com/shop/index.php?l=product_list&c=107)
+* **MAKE SURE THE SWITCHES YOU CHOOSE SAY PCB MOUNT**
+  * I used my favorite switch, Kalih Speed Copper, which is plate mount
+  * PCB mounted switches have two additional feet to help alignment
+  * Plate mounted switches are very hard to align
+  * Do not buy plate mounted switches
+
+
+![Plate Mount](./images/plate_mount.PNG)
+
+![PCB Mount](./images/pcb_mount.PNG)
 
 **WIP**
